@@ -3,6 +3,11 @@
 * **Curso:** [[NEW] Spring Boot 3, Spring Framework 6: Beginner to Guru](https://www.udemy.com/course/spring-framework-6-beginner-to-guru/)  
 * **Resumo:** Spring 6, Spring Boot 3, Spring MVC, JPA/Hibernate, Mongo, Spring Security, OAuth2 JWT, MySQL, Docker/K8s, Microservices
 
+## Projetos
+
+1. Spring 6 - Web App
+2. Spring 6 - DI (Dependency Inversion)
+
 ## Conteúdo do Curso
 
 1. Introduction
