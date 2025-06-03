@@ -1,16 +1,21 @@
 package com.juhmaran.spring6di.controllers;
 
+import com.juhmaran.spring6di.services.GreetingService;
+import com.juhmaran.spring6di.services.GreetingServiceImpl;
 import org.springframework.stereotype.Controller;
 
-@Controller // Diz ao Spring que esta classe é um componente (um "bean")
+@Controller
 public class MyController {
 
-  public String sayHello() { // Um metodo que retorna um texto
-    System.out.println("I'm in the controller"); // Mostra no console quando o metodo é chamado
-    return "Hello Everyone!!!"; // Devolve este texto
+  private final GreetingService greetingService;
+
+  public MyController() {
+    this.greetingService = new GreetingServiceImpl();
+  }
+
+  public String sayHello() {
+    System.out.println("I'm in the controller");
+    return greetingService.sayGreeting();
   }
 
 }
-
-
-
