@@ -1,4 +1,4 @@
-package com.juhmaran.spring6di.services.environment;
+package com.juhmaran.spring6di.services;
 
 public interface EnvironmentService {
 

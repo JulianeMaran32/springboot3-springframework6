@@ -1,6 +1,6 @@
 package com.juhmaran.spring6di.controllers;
 
-import com.juhmaran.spring6di.services.environment.EnvironmentService;
+import com.juhmaran.spring6di.services.EnvironmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

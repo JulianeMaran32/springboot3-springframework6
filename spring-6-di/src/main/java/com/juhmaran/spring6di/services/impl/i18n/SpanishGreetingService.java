@@ -1,4 +1,4 @@
-package com.juhmaran.spring6di.services.i18n;
+package com.juhmaran.spring6di.services.impl.i18n;
 
 
 import com.juhmaran.spring6di.services.GreetingService;

@@ -10,14 +10,10 @@ public class SetterInjectedController {
 
   private GreetingService greetingService; // O campo
 
-  // @Qualifier("setterGreetingBean") // <-- Não aqui!
-  // @Autowired // <-- Não aqui se for usar no setter!
-  // private GreetingService greetingService; // Campo anotado NÃO FUNCIONA BEM com setter
-
-  @Qualifier("setterGreetingBean") // <--- Melhor lugar para @Qualifier e @Autowired no SETTER
-  @Autowired // <--- Pedimos para o Spring usar este SETTER para injetar
-  public void setGreetingService(GreetingService greetingService) {
-    this.greetingService = greetingService; // O Spring chamará este metodo
+  @Autowired // @Autowired no metodo setter
+  public void setGreetingService(@Qualifier("setterGreetingBean")
+                                 GreetingService greetingService) { // @Qualifier no parâmetro
+    this.greetingService = greetingService;
   }
 
   public String sayHello() {
@@ -25,7 +21,3 @@ public class SetterInjectedController {
   }
 
 }
-
-
-
-
