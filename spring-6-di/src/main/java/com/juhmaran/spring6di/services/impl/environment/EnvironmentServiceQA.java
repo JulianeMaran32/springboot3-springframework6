@@ -4,7 +4,7 @@ import com.juhmaran.spring6di.services.EnvironmentService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-@Profile("qa")
+@Profile("qa") // Serviço para ambiente qa, apenas no perfil "qa"
 @Service
 public class EnvironmentServiceQA implements EnvironmentService {
 
@@ -12,4 +12,5 @@ public class EnvironmentServiceQA implements EnvironmentService {
   public String getEnv() {
     return "qa";
   }
+
 }

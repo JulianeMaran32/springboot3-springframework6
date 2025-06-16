@@ -10,12 +10,13 @@ public class EnvironmentController {
   private final EnvironmentService environmentService;
 
   @Autowired
+  // O controlador precisa de um EnvironmentService
   public EnvironmentController(EnvironmentService environmentService) {
     this.environmentService = environmentService;
   }
 
   public String getEnvironment() {
-    return "You are in " + environmentService.getEnv() + " Environment.";
+    return "You are in " + environmentService.getEnv() + " Environment."; // Retorna a string do ambiente
   }
 
 }
