@@ -3,12 +3,11 @@ package com.juhmaran.spring6di.services.impl;
 import com.juhmaran.spring6di.services.GreetingService;
 import org.springframework.stereotype.Service;
 
-@Service(value = "propertyGreetingService")
+@Service(value = "propertyGreetingService") // Demos um nome customizado para o bean
 public class GreetingServicePropertyInjected implements GreetingService {
 
   @Override
   public String sayGreeting() {
-    // Amigos não deixam amigos fazerem injeção de propriedade!
     return "Friends don't let friends to property injection!";
   }
 

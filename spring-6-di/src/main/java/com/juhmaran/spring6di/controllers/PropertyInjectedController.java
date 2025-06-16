@@ -8,8 +8,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class PropertyInjectedController {
 
-  // Injeção por Propriedade - Menos recomendado
-  @Qualifier("propertyGreetingService")
+  @Qualifier("propertyGreetingService") // Usamos o nome customizado
   @Autowired
   GreetingService greetingService;
 

@@ -1,6 +1,7 @@
 package com.juhmaran.spring6di;
 
 import com.juhmaran.spring6di.controllers.MyController;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,20 +16,23 @@ class Spring6DiApplicationTests {
   @Autowired // Pede ao Spring para injetar diretamente o objeto MyController
   MyController myController;
 
-  @Test // Marca um metodo como um teste
+  @Test
+  @DisplayName("Test Autowired of Controller")
   void testAutowireOfController() {
     // Usa o myController que foi injetado diretamente
     System.out.println(myController.sayHello());
   }
 
-  @Test // Marca outro metodo como um teste
+  @Test
+  @DisplayName("Test Get Controller from Ctx")
   void testGetControllerFromCtx() {
     // Pede o bean MyController ao Contexto da Aplicação que foi injetado
     MyController myController = applicationContext.getBean(MyController.class);
     System.out.println(myController.sayHello());
   }
 
-  @Test // Mais um metodo de teste (este não faz nada específico)
+  @Test
+  @DisplayName("Context Loads")
   void contextLoads() {
     // Este teste verifica se o contexto Spring carrega corretamente
   }

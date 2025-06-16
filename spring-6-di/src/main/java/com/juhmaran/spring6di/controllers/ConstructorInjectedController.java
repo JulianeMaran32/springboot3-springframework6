@@ -9,6 +9,7 @@ public class ConstructorInjectedController {
 
   private final GreetingService greetingService;
 
+  // Usamos @Qualifier para dizer ao Spring qual bean queremos EXATAMENTE
   public ConstructorInjectedController(@Qualifier("greetingServiceImpl") GreetingService greetingService) {
     this.greetingService = greetingService;
   }

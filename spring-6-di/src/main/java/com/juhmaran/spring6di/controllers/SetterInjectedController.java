@@ -8,12 +8,16 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SetterInjectedController {
 
-  private GreetingService greetingService;
+  private GreetingService greetingService; // O campo
 
-  @Qualifier("setterGreetingBean")
-  @Autowired
+  // @Qualifier("setterGreetingBean") // <-- Não aqui!
+  // @Autowired // <-- Não aqui se for usar no setter!
+  // private GreetingService greetingService; // Campo anotado NÃO FUNCIONA BEM com setter
+
+  @Qualifier("setterGreetingBean") // <--- Melhor lugar para @Qualifier e @Autowired no SETTER
+  @Autowired // <--- Pedimos para o Spring usar este SETTER para injetar
   public void setGreetingService(GreetingService greetingService) {
-    this.greetingService = greetingService;
+    this.greetingService = greetingService; // O Spring chamará este metodo
   }
 
   public String sayHello() {
@@ -21,3 +25,7 @@ public class SetterInjectedController {
   }
 
 }
+
+
+
+

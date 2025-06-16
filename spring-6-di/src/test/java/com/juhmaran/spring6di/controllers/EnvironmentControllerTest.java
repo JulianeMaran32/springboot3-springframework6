@@ -1,5 +1,6 @@
 package com.juhmaran.spring6di.controllers;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ class EnvironmentControllerTest {
   EnvironmentController environmentController;
 
   @Test
+  @DisplayName("Test Environment Controller (dev, qa, uat, prod)")
   void getEnvironment() {
     System.out.println(environmentController.getEnvironment());
   }
