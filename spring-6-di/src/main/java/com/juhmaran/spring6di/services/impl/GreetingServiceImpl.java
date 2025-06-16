@@ -1,5 +1,6 @@
-package com.juhmaran.spring6di.services;
+package com.juhmaran.spring6di.services.impl;
 
+import com.juhmaran.spring6di.services.GreetingService;
 import org.springframework.stereotype.Service;
 
 @Service
