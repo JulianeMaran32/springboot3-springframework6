@@ -41,4 +41,6 @@ validado em diferentes etapas, desde a criação até a implantação em produç
   produção.
 * Utilizar tecnologias como contêineres ou virtualização para criar ambientes isolados que imitem de perto a
   configuração de produção.
-* Implementar controle de versão para arquivos de configuração, garantindo a consistência entre os ambientes. 
+* Implementar controle de versão para arquivos de configuração, garantindo a consistência entre os ambientes.
+
+---

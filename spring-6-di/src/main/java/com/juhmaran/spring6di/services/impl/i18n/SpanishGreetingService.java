@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Profile("ES")
-@Service("i18nService")
+@Service("i18NService")
 public class SpanishGreetingService implements GreetingService {
 
   @Override

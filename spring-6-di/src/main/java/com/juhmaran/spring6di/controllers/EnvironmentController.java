@@ -1,7 +1,6 @@
 package com.juhmaran.spring6di.controllers;
 
 import com.juhmaran.spring6di.services.EnvironmentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -9,14 +8,12 @@ public class EnvironmentController {
 
   private final EnvironmentService environmentService;
 
-  @Autowired
-  // O controlador precisa de um EnvironmentService
   public EnvironmentController(EnvironmentService environmentService) {
     this.environmentService = environmentService;
   }
 
   public String getEnvironment() {
-    return "You are in " + environmentService.getEnv() + " Environment."; // Retorna a string do ambiente
+    return "You are in " + environmentService.getEnv() + " Environment";
   }
 
 }

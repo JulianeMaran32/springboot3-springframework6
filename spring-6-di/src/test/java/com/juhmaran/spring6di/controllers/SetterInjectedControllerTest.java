@@ -12,7 +12,6 @@ class SetterInjectedControllerTest {
   SetterInjectedController setterInjectedController;
 
   @Test
-  @DisplayName("Test Setter Injected Controller")
   void sayHello() {
     System.out.println(setterInjectedController.sayHello());
   }

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SetterInjectedController {
 
-  private GreetingService greetingService; // O campo
+  private GreetingService greetingService;
 
-  @Autowired // @Autowired no metodo setter
-  public void setGreetingService(@Qualifier("setterGreetingBean")
-                                 GreetingService greetingService) { // @Qualifier no parâmetro
+  @Qualifier("setterGreetingBean")
+  @Autowired
+  public void setGreetingService(GreetingService greetingService) {
     this.greetingService = greetingService;
   }
 

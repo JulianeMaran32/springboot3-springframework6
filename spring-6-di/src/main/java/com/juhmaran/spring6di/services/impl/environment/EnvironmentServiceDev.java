@@ -11,7 +11,7 @@ public class EnvironmentServiceDev implements EnvironmentService {
 
   @Override
   public String getEnv() {
-    return "dev"; // Retorna "dev"
+    return "dev";
   }
 
 }

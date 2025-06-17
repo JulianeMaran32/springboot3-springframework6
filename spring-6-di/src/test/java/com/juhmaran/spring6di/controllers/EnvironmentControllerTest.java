@@ -1,22 +1,20 @@
 package com.juhmaran.spring6di.controllers;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles({"prod", "EN"}) // Ativa o perfil "prod"
+@ActiveProfiles({"dev", "EN"})
 @SpringBootTest
 class EnvironmentControllerTest {
 
   @Autowired
-  EnvironmentController environmentController;
+  EnvironmentController controller;
 
   @Test
-  @DisplayName("Test Environment Controller (dev, qa, uat, prod)")
   void getEnvironment() {
-    System.out.println(environmentController.getEnvironment());
+    System.out.println(controller.getEnvironment());
   }
 
 }
