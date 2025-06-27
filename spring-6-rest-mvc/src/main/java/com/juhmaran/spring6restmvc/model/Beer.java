@@ -13,7 +13,7 @@ import java.util.UUID;
  * @since 26/06/2025
  */
 @Data
-@Builder
+@Builder // add Builder
 public class Beer {
 
   private UUID uuid;

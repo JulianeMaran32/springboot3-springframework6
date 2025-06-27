@@ -20,7 +20,7 @@ public class BeerServiceImpl implements BeerService {
 
   @Override
   public Beer getBeerById(UUID id) {
-    log.debug("Get Beer by Id - in service. Id: " + id.toString());
+    log.debug("Get Beer by Id - in service. Id: {}", id.toString());
     return Beer.builder()
       .uuid(id)
       .version(1)
