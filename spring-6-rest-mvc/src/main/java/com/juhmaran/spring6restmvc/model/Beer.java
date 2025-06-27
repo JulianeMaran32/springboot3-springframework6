@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder // add Builder
 public class Beer {
 
-  private UUID uuid;
+  private UUID id;
   private Integer version;
   private String beerName;
   private BeerStyle beerStyle;

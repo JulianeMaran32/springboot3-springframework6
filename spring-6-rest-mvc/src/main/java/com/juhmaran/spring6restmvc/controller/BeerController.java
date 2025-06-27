@@ -4,8 +4,11 @@ import com.juhmaran.spring6restmvc.model.Beer;
 import com.juhmaran.spring6restmvc.services.BeerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -15,6 +18,7 @@ import java.util.UUID;
  */
 @Slf4j
 @RestController
+@RequestMapping("/api/v1/beer")
 @AllArgsConstructor
 public class BeerController {
 
@@ -23,6 +27,11 @@ public class BeerController {
   public Beer getBeerById(UUID id) {
     log.debug("Get Beer by Id - in controller.");
     return beerService.getBeerById(id);
+  }
+
+  @GetMapping
+  public List<Beer> listBeer() {
+    return beerService.listBeers();
   }
 
 }
