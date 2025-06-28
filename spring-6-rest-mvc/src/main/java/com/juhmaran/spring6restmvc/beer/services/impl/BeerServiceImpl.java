@@ -1,7 +1,8 @@
-package com.juhmaran.spring6restmvc.services;
+package com.juhmaran.spring6restmvc.beer.services.impl;
 
-import com.juhmaran.spring6restmvc.model.Beer;
-import com.juhmaran.spring6restmvc.model.BeerStyle;
+import com.juhmaran.spring6restmvc.beer.model.Beer;
+import com.juhmaran.spring6restmvc.beer.model.BeerStyle;
+import com.juhmaran.spring6restmvc.beer.services.BeerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ import java.util.*;
 @Service
 public class BeerServiceImpl implements BeerService {
 
-  private Map<UUID, Beer> beerMap;
+  private final Map<UUID, Beer> beerMap;
 
   public BeerServiceImpl() {
     this.beerMap = new HashMap<>();

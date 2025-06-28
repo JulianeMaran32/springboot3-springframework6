@@ -1,10 +1,11 @@
-package com.juhmaran.spring6restmvc.controller;
+package com.juhmaran.spring6restmvc.beer.controller;
 
-import com.juhmaran.spring6restmvc.model.Beer;
-import com.juhmaran.spring6restmvc.services.BeerService;
+import com.juhmaran.spring6restmvc.beer.services.BeerService;
+import com.juhmaran.spring6restmvc.beer.model.Beer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +25,10 @@ public class BeerController {
 
   private final BeerService beerService;
 
-  public Beer getBeerById(UUID id) {
+  @GetMapping("/{beerId}")
+  public Beer getBeerById(@PathVariable(name = "beerId") UUID beerId) {
     log.debug("Get Beer by Id - in controller.");
-    return beerService.getBeerById(id);
+    return beerService.getBeerById(beerId);
   }
 
   @GetMapping

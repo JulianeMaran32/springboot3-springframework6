@@ -1,6 +1,6 @@
-package com.juhmaran.spring6restmvc.services;
+package com.juhmaran.spring6restmvc.beer.services;
 
-import com.juhmaran.spring6restmvc.model.Beer;
+import com.juhmaran.spring6restmvc.beer.model.Beer;
 
 import java.util.List;
 import java.util.UUID;

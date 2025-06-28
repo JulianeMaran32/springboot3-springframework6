@@ -1,4 +1,4 @@
-package com.juhmaran.spring6restmvc.model;
+package com.juhmaran.spring6restmvc.beer.model;
 
 /**
  * Created by Juliane Maran
