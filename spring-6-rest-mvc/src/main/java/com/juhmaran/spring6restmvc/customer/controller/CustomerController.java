@@ -2,7 +2,7 @@ package com.juhmaran.spring6restmvc.customer.controller;
 
 import com.juhmaran.spring6restmvc.customer.model.Customer;
 import com.juhmaran.spring6restmvc.customer.services.CustomerService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/customer")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomerController {
 
   private final CustomerService customerService;

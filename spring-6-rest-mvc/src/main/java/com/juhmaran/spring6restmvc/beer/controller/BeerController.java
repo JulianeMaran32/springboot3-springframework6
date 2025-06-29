@@ -2,7 +2,7 @@ package com.juhmaran.spring6restmvc.beer.controller;
 
 import com.juhmaran.spring6restmvc.beer.model.Beer;
 import com.juhmaran.spring6restmvc.beer.services.BeerService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/beer")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BeerController {
 
   private final BeerService beerService;
