@@ -1,6 +1,5 @@
-package com.juhmaran.spring6restmvc.controller;
+package com.juhmaran.spring6restmvc.beer.controller;
 
-import com.juhmaran.spring6restmvc.beer.controller.BeerController;
 import com.juhmaran.spring6restmvc.beer.model.Beer;
 import com.juhmaran.spring6restmvc.beer.services.BeerService;
 import com.juhmaran.spring6restmvc.beer.services.impl.BeerServiceImpl;
