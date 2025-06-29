@@ -67,7 +67,6 @@ public class BeerServiceImpl implements BeerService {
 
   @Override
   public Beer getBeerById(UUID id) {
-    log.debug("Get Beer by Id - in service. Id: {}", id.toString());
     return beerMap.get(id);
   }
 
@@ -78,7 +77,6 @@ public class BeerServiceImpl implements BeerService {
 
   @Override
   public Beer saveNewBeer(Beer beer) {
-    log.debug("Create Beer - in service. Beer: {}", beer);
     Beer savedBeer = Beer.builder()
       .id(UUID.randomUUID())
       .createdDate(LocalDateTime.now())
@@ -103,6 +101,11 @@ public class BeerServiceImpl implements BeerService {
     existing.setQuantityOnHand(beer.getQuantityOnHand());
 
     beerMap.put(existing.getId(), existing);
+  }
+
+  @Override
+  public void deleteBeerById(UUID beerId) {
+    beerMap.remove(beerId);
   }
 
 }
