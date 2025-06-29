@@ -2,6 +2,7 @@ package com.juhmaran.spring6restmvc.customer.services.impl;
 
 import com.juhmaran.spring6restmvc.customer.model.Customer;
 import com.juhmaran.spring6restmvc.customer.services.CustomerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.*;
  *
  * @since 28/06/2025
  */
+@Slf4j
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -55,6 +57,20 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public List<Customer> getAllCustomers() {
     return new ArrayList<>(customerMap.values());
+  }
+
+  @Override
+  public Customer saveNewCustomer(Customer customer) {
+    log.debug("Save new Customer - in controller: {}", customer.getId());
+    Customer savedCustomer = Customer.builder()
+      .id(UUID.randomUUID())
+      .name(customer.getName())
+      .version(customer.getVersion() + 1)
+      .createdDate(LocalDateTime.now())
+      .updateDate(LocalDateTime.now())
+      .build();
+    customerMap.put(savedCustomer.getId(), savedCustomer);
+    return savedCustomer;
   }
 
 }
