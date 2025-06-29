@@ -34,7 +34,6 @@ public class BeerController {
 
   @DeleteMapping("/{beerId}")
   public ResponseEntity<Void> deleteById(@PathVariable(name = "beerId") UUID beerId) {
-    log.debug("Delete Beer by Id - in controller. Id: {}", beerId);
     beerService.deleteBeerById(beerId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
