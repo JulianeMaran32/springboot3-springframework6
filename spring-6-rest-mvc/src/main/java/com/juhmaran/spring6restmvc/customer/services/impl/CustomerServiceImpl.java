@@ -4,6 +4,7 @@ import com.juhmaran.spring6restmvc.customer.model.Customer;
 import com.juhmaran.spring6restmvc.customer.services.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -61,7 +62,6 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer saveNewCustomer(Customer customer) {
-    log.debug("Save new Customer - in controller: {}", customer.getId());
     Customer savedCustomer = Customer.builder()
       .id(UUID.randomUUID())
       .name(customer.getName())
@@ -82,7 +82,14 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public void deleteCustomerById(UUID customerId) {
     customerMap.remove(customerId);
-    log.debug("Customer with id {} deleted", customerId);
+  }
+
+  @Override
+  public void patchCustomerById(UUID customerId, Customer customer) {
+    Customer existingCustomer = customerMap.get(customerId);
+    if (StringUtils.hasText(customer.getName())) {
+      existingCustomer.setName(customer.getName());
+    }
   }
 
 }
