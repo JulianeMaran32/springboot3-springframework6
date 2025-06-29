@@ -30,8 +30,8 @@ public class CustomerController {
     Customer savedCustomer = customerService.saveNewCustomer(customer);
     log.debug("Save new Customer - in controller: {}", savedCustomer.getId());
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.LOCATION, "/api/v1/customer/" + savedCustomer.getId().toString());
-    return new ResponseEntity<>(savedCustomer, headers, HttpStatus.CREATED);
+    headers.add(HttpHeaders.LOCATION, savedCustomer.getId().toString());
+    return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
   @GetMapping("/{customerId}")
