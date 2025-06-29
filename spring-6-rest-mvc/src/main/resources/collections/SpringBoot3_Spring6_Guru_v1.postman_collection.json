@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "7ed2342f-494f-498a-b2b6-ee3ba3f6feab",
+		"name": "SpringBoot3 - Spring6 - Guru",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13771815"
+	},
+	"item": [
+		{
+			"name": "Beer",
+			"item": [
+				{
+					"name": "List Beer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate the structure of the beer object\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.forEach(function(beer) {\r",
+									"        pm.expect(beer).to.be.an('object');\r",
+									"        pm.expect(beer).to.have.all.keys('id', 'version', 'beerName', 'beerStyle', 'upc', 'quantityOnHand', 'price', 'createdDate', 'updateDate');\r",
+									"        \r",
+									"        pm.expect(beer.id).to.be.a('string');\r",
+									"        pm.expect(beer.version).to.be.a('number');\r",
+									"        pm.expect(beer.beerName).to.be.a('string');\r",
+									"        pm.expect(beer.beerStyle).to.be.a('string');\r",
+									"        pm.expect(beer.upc).to.be.a('string');\r",
+									"        pm.expect(beer.quantityOnHand).to.be.a('number');\r",
+									"        pm.expect(beer.price).to.be.a('number');\r",
+									"        pm.expect(beer.createdDate).to.be.a('string');\r",
+									"        pm.expect(beer.updateDate).to.be.a('string');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"The beerName must be a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.beerName).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Price must be a non-negative number\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.price).to.be.a('number').and.to.be.at.least(0, \"Price should be non-negative\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(100);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"});\r",
+									"var responseData = pm.response.json();\r",
+									"\r",
+									"// Test for response status code\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"// Validate the structure of the beer object\r",
+									"pm.test(\"Validate the structure of the beer object\", function () {\r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.forEach(function(beer) {\r",
+									"        pm.expect(beer).to.be.an('object');\r",
+									"        pm.expect(beer).to.have.all.keys('id', 'version', 'beerName', 'beerStyle', 'upc', 'quantityOnHand', 'price', 'createdDate', 'updateDate');\r",
+									"        \r",
+									"        pm.expect(beer.id).to.be.a('string');\r",
+									"        pm.expect(beer.version).to.be.a('number');\r",
+									"        pm.expect(beer.beerName).to.be.a('string');\r",
+									"        pm.expect(beer.beerStyle).to.be.a('string');\r",
+									"        pm.expect(beer.upc).to.be.a('string');\r",
+									"        pm.expect(beer.quantityOnHand).to.be.a('number');\r",
+									"        pm.expect(beer.price).to.be.a('number');\r",
+									"        pm.expect(beer.createdDate).to.be.a('string');\r",
+									"        pm.expect(beer.updateDate).to.be.a('string');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// Check that beerName is a non-empty string\r",
+									"pm.test(\"The beerName must be a non-empty string\", function () {\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.beerName).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// Check that price is a non-negative number\r",
+									"pm.test(\"Price must be a non-negative number\", function () {\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item.price).to.be.a('number').and.to.be.at.least(0, \"Price should be non-negative\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// Test response time\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 22:47:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"431edf43-9e0d-4953-a254-ab8c9eb93242\",\n        \"version\": 1,\n        \"beerName\": \"Crank\",\n        \"beerStyle\": \"PALE_ALE\",\n        \"upc\": \"12356222\",\n        \"quantityOnHand\": 392,\n        \"price\": 11.99,\n        \"createdDate\": \"2025-06-27T19:42:00.8902624\",\n        \"updateDate\": \"2025-06-27T19:42:00.8902624\"\n    },\n    {\n        \"id\": \"69dee3b5-c780-44af-914c-091d98c5f7d7\",\n        \"version\": 1,\n        \"beerName\": \"Galaxy Cat\",\n        \"beerStyle\": \"PALE_ALE\",\n        \"upc\": \"12356\",\n        \"quantityOnHand\": 122,\n        \"price\": 12.99,\n        \"createdDate\": \"2025-06-27T19:42:00.8892623\",\n        \"updateDate\": \"2025-06-27T19:42:00.8892623\"\n    },\n    {\n        \"id\": \"1f64ecc3-87de-4f19-9eb0-c55761b3dc73\",\n        \"version\": 1,\n        \"beerName\": \"Sunshine City\",\n        \"beerStyle\": \"IPA\",\n        \"upc\": \"12356\",\n        \"quantityOnHand\": 144,\n        \"price\": 13.99,\n        \"createdDate\": \"2025-06-27T19:42:00.8902624\",\n        \"updateDate\": \"2025-06-27T19:42:00.8902624\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Guru API Beer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.springframework.guru/api/v1/beer",
+							"protocol": "https",
+							"host": [
+								"api",
+								"springframework",
+								"guru"
+							],
+							"path": [
+								"api",
+								"v1",
+								"beer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.springframework.guru/api/v1/beer",
+									"protocol": "https",
+									"host": [
+										"api",
+										"springframework",
+										"guru"
+									],
+									"path": [
+										"api",
+										"v1",
+										"beer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 22:47:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "95687cb87d840122-GRU"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers, Accept-Encoding"
+								},
+								{
+									"key": "cf-apo-via",
+									"value": "origin,host"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=Gq9vvlgNDLKxn9eK6LZqzRb2qAK4fnMiEb3pM6XpIxWqU3Ee2Z1il8342C%2F3KcpMpT9vwrYrODLfxovUbOyPM4ZnMKrhhyuBFgBAyTFDTg3Dv2goUka0iaYdymIRs6sQcu0CnT2dC33Dzg%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "server-timing",
+									"value": "cfL4;desc=\"?proto=TCP&rtt=13480&min_rtt=12594&rtt_var=5356&sent=4&recv=5&lost=0&retrans=0&sent_bytes=2359&recv_bytes=882&delivery_rate=230585&cwnd=244&unsent_bytes=0&cid=536f172081b2d07d&ts=227&x=0\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"id\": \"2f19f6af-af82-4084-a4ff-82629e92eb41\",\n            \"beerName\": \"Mango Bobs\",\n            \"beerStyle\": \"ALE\",\n            \"upc\": \"0631234200036\",\n            \"price\": 54.18,\n            \"quantityOnHand\": 1144,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"16b1db96-20d5-4590-9a8e-498867b67e77\",\n            \"beerName\": \"Galaxy Cat\",\n            \"beerStyle\": \"PALE_ALE\",\n            \"upc\": \"9122089364369\",\n            \"price\": 50.67,\n            \"quantityOnHand\": 22,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"d560ef50-e87a-4ed2-a8e4-88c44be465f8\",\n            \"beerName\": \"No Hammers On The Bar\",\n            \"beerStyle\": \"WHEAT\",\n            \"upc\": \"0083783375213\",\n            \"price\": 51.15,\n            \"quantityOnHand\": 85,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"340d3cc8-bf16-4c2a-ab16-1cf3edf726a2\",\n            \"beerName\": \"Blessed\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"4666337557578\",\n            \"price\": 70.95,\n            \"quantityOnHand\": 538,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"51896b26-2fc7-40c0-8bb3-0df65ae0208a\",\n            \"beerName\": \"Adjunct Trail\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"8380495518610\",\n            \"price\": 8.23,\n            \"quantityOnHand\": 4833,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"dd8a80f3-1050-4508-ac32-7c9632291453\",\n            \"beerName\": \"Very GGGreenn\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"5677465691934\",\n            \"price\": 38.7,\n            \"quantityOnHand\": 2869,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"d35dbce7-c9ae-41ca-a384-0e98f15f0831\",\n            \"beerName\": \"Double Barrel Hunahpu's\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"5463533082885\",\n            \"price\": 88.24,\n            \"quantityOnHand\": 4676,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"b53dc8f3-831d-4206-9c63-99db5fac7a32\",\n            \"beerName\": \"Very Hazy\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"5339741428398\",\n            \"price\": 24.98,\n            \"quantityOnHand\": 437,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"7f8acde2-eb1b-457d-91e5-e62b0a9c415a\",\n            \"beerName\": \"SR-71\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"1726923962766\",\n            \"price\": 77.56,\n            \"quantityOnHand\": 1636,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"2532e14c-819d-4c4f-967e-dddc25308d26\",\n            \"beerName\": \"Pliny the Younger\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"8484957731774\",\n            \"price\": 51.55,\n            \"quantityOnHand\": 3224,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"239b7d43-06b3-45c2-b0e0-30ea0cf09c29\",\n            \"beerName\": \"Blessed\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"6266328524787\",\n            \"price\": 28.68,\n            \"quantityOnHand\": 154,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"51fe48d7-8604-4ca1-bbad-e74534a21636\",\n            \"beerName\": \"King Krush\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"7490217802727\",\n            \"price\": 83.57,\n            \"quantityOnHand\": 3127,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"5f609fa6-8bea-428c-99b5-7f5cb7ed93b1\",\n            \"beerName\": \"PBS Porter\",\n            \"beerStyle\": \"PORTER\",\n            \"upc\": \"8579613295827\",\n            \"price\": 92.25,\n            \"quantityOnHand\": 3137,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"abe64373-d915-4f34-acea-6a33455ca26d\",\n            \"beerName\": \"Pinball Porter\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"2318301340601\",\n            \"price\": 21.56,\n            \"quantityOnHand\": 1865,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"2ea42600-831c-4d11-a26d-1d0c245ccde6\",\n            \"beerName\": \"Golden Budda\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"9401790633828\",\n            \"price\": 75.46,\n            \"quantityOnHand\": 4868,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"7f6b4522-afc9-4720-8786-2455f0c53966\",\n            \"beerName\": \"Grand Central Red\",\n            \"beerStyle\": \"LAGER\",\n            \"upc\": \"4813896316225\",\n            \"price\": 66.59,\n            \"quantityOnHand\": 1792,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"eb041447-211a-4d9b-ac3d-ed40d3147a1a\",\n            \"beerName\": \"Pac-Man\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"3431272499891\",\n            \"price\": 3.68,\n            \"quantityOnHand\": 3938,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"90e29bec-3e70-4217-87b0-e8edceeefc9e\",\n            \"beerName\": \"Ro Sham Bo\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"2380867498485\",\n            \"price\": 25.89,\n            \"quantityOnHand\": 522,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"cee96324-b27d-4bdb-b062-55b6f2265e3f\",\n            \"beerName\": \"Summer Wheatly\",\n            \"beerStyle\": \"WHEAT\",\n            \"upc\": \"4323950503848\",\n            \"price\": 31.38,\n            \"quantityOnHand\": 1800,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"532ba900-2c30-41bb-81a8-43ea25726c80\",\n            \"beerName\": \"Java Jill\",\n            \"beerStyle\": \"LAGER\",\n            \"upc\": \"4006016803570\",\n            \"price\": 19.55,\n            \"quantityOnHand\": 4591,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"ba694c21-4eb4-4f53-a772-3163bec034bd\",\n            \"beerName\": \"Bike Trail Pale\",\n            \"beerStyle\": \"PALE_ALE\",\n            \"upc\": \"9883012356263\",\n            \"price\": 2.44,\n            \"quantityOnHand\": 2980,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"eaecbae3-c7c4-4d2a-8a75-4ef02429474c\",\n            \"beerName\": \"N.Z.P\",\n            \"beerStyle\": \"IPA\",\n            \"upc\": \"0583668718888\",\n            \"price\": 48.11,\n            \"quantityOnHand\": 1937,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"7d0ac0e9-fcd0-4247-9e64-ce849e1204e8\",\n            \"beerName\": \"Stawberry Blond\",\n            \"beerStyle\": \"WHEAT\",\n            \"upc\": \"9006801347604\",\n            \"price\": 28.42,\n            \"quantityOnHand\": 1194,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"16271900-84f9-4a10-b282-9876b4e69e1b\",\n            \"beerName\": \"Loco\",\n            \"beerStyle\": \"PORTER\",\n            \"upc\": \"0610275742736\",\n            \"price\": 11.29,\n            \"quantityOnHand\": 2668,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        },\n        {\n            \"id\": \"ab0c385d-ed64-4ccf-8081-51e413c2ae91\",\n            \"beerName\": \"Spocktoberfest\",\n            \"beerStyle\": \"STOUT\",\n            \"upc\": \"6504219363283\",\n            \"price\": 62.35,\n            \"quantityOnHand\": 2741,\n            \"createdDate\": \"2025-06-27T22:06:38.567Z\",\n            \"lastUpdatedDate\": null\n        }\n    ],\n    \"number\": 0,\n    \"size\": 25,\n    \"totalElements\": 30,\n    \"pageable\": {\n        \"sort\": {\n            \"sorted\": false,\n            \"unsorted\": true,\n            \"empty\": true\n        },\n        \"offset\": 0,\n        \"pageNumber\": 0,\n        \"pageSize\": 25,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": false,\n    \"totalPages\": 2,\n    \"sort\": {\n        \"sorted\": false,\n        \"unsorted\": true,\n        \"empty\": true\n    },\n    \"first\": true,\n    \"numberOfElements\": 25,\n    \"empty\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Beer By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer/926595d2-a2cf-4184-8b5a-235d46de9571",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer",
+								"926595d2-a2cf-4184-8b5a-235d46de9571"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer/dba57fa4-47e4-400b-8f4c-70db2740bace",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer",
+										"dba57fa4-47e4-400b-8f4c-70db2740bace"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Jun 2025 15:19:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"dba57fa4-47e4-400b-8f4c-70db2740bace\",\n    \"version\": 1,\n    \"beerName\": \"Sunshine City\",\n    \"beerStyle\": \"IPA\",\n    \"upc\": \"12356\",\n    \"quantityOnHand\": 144,\n    \"price\": 13.99,\n    \"createdDate\": \"2025-06-28T12:18:39.6850655\",\n    \"updateDate\": \"2025-06-28T12:18:39.6850655\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Save New Beer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beerName\": \"Blessed\",\r\n    \"beerStyle\": \"STOUT\",\r\n    \"upc\": \"4666337557578\",\r\n    \"price\": 97.35,\r\n    \"quantityOnHand\": 911\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"version\": 1,\r\n    \"beerName\": \"Mongo Bobs - JTs 5\",\r\n    \"beerStyle\": \"ALE\",\r\n    \"upc\": \"012345600005\",\r\n    \"quantityOnHand\": 250,\r\n    \"price\": 12.16\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 28 Jun 2025 23:09:35 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"73a5072f-7bf6-46bf-9e25-a194517309bb\",\n    \"version\": 1,\n    \"beerName\": \"Mongo Bobs - JTs 5\",\n    \"beerStyle\": \"ALE\",\n    \"upc\": \"012345600005\",\n    \"quantityOnHand\": 250,\n    \"price\": 12.16,\n    \"createdDate\": \"2025-06-28T20:09:35.253081\",\n    \"updateDate\": \"2025-06-28T20:09:35.253081\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get Customer By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/a240d49b-01ea-4bc0-92a9-93010f7acd8f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"a240d49b-01ea-4bc0-92a9-93010f7acd8f"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer/a240d49b-01ea-4bc0-92a9-93010f7acd8f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"a240d49b-01ea-4bc0-92a9-93010f7acd8f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 29 Jun 2025 01:26:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Juliane Maran\",\n    \"id\": \"a240d49b-01ea-4bc0-92a9-93010f7acd8f\",\n    \"version\": 1,\n    \"createdDate\": \"2025-06-28T22:26:07.919029\",\n    \"updateDate\": \"2025-06-28T22:26:07.919029\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 29 Jun 2025 01:26:31 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Customer 3\",\n        \"id\": \"af950891-6324-4444-bfb5-343cd5222d7d\",\n        \"version\": 1,\n        \"createdDate\": \"2025-06-28T22:25:11.4609704\",\n        \"updateDate\": \"2025-06-28T22:25:11.4609704\"\n    },\n    {\n        \"name\": \"Customer 2\",\n        \"id\": \"39eec8ba-5426-437b-8cd1-a61fbddf0af1\",\n        \"version\": 1,\n        \"createdDate\": \"2025-06-28T22:25:11.4609704\",\n        \"updateDate\": \"2025-06-28T22:25:11.4609704\"\n    },\n    {\n        \"name\": \"Juliane Maran\",\n        \"id\": \"a240d49b-01ea-4bc0-92a9-93010f7acd8f\",\n        \"version\": 1,\n        \"createdDate\": \"2025-06-28T22:26:07.919029\",\n        \"updateDate\": \"2025-06-28T22:26:07.919029\"\n    },\n    {\n        \"name\": \"Customer 1\",\n        \"id\": \"eabb309b-f94e-440d-ae2a-9de22650f694\",\n        \"version\": 1,\n        \"createdDate\": \"2025-06-28T22:25:11.4599705\",\n        \"updateDate\": \"2025-06-28T22:25:11.4599705\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Save New Customer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juliane Maran\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Juliane Maran\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Location",
+									"value": "a240d49b-01ea-4bc0-92a9-93010f7acd8f"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 29 Jun 2025 01:26:07 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	]
+}
