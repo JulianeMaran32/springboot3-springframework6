@@ -1,8 +1,10 @@
 package com.juhmaran.spring6restmvc.customer.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juhmaran.spring6restmvc.customer.model.Customer;
 import com.juhmaran.spring6restmvc.customer.services.CustomerService;
 import com.juhmaran.spring6restmvc.customer.services.impl.CustomerServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.Is.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(CustomerController.class)
@@ -25,7 +29,32 @@ class CustomerControllerTest {
   @Autowired
   MockMvc mockMvc;
 
-  CustomerServiceImpl customerServiceImpl = new CustomerServiceImpl();
+  @Autowired
+  ObjectMapper objectMapper;
+
+  CustomerServiceImpl customerServiceImpl;
+
+  @BeforeEach
+  void setUp() {
+    customerServiceImpl = new CustomerServiceImpl();
+  }
+
+  @Test
+  @DisplayName("Create New Customer")
+  void testCreateNewCustomer() throws Exception {
+    Customer customer = customerServiceImpl.getAllCustomers().getFirst();
+    customer.setId(null);
+    customer.setVersion(null);
+
+    given(customerService.saveNewCustomer(any(Customer.class)))
+      .willReturn(customerServiceImpl.getAllCustomers().get(1));
+
+    mockMvc.perform(post("/api/v1/customer").contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(customer)))
+      .andExpect(status().isCreated())
+      .andExpect(header().exists("Location"));
+  }
 
   @Test
   @DisplayName("Get Customer by ID")
