@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juhmaran.spring6restmvc.beer.model.Beer;
 import com.juhmaran.spring6restmvc.beer.services.BeerService;
 import com.juhmaran.spring6restmvc.beer.services.impl.BeerServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.Is.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(BeerController.class)
@@ -30,15 +33,31 @@ class BeerControllerTest {
   @MockitoBean
   BeerService beerService;
 
-  BeerServiceImpl beerServiceImpl = new BeerServiceImpl();
+  BeerServiceImpl beerServiceImpl;
+
+  @BeforeEach
+  void setUp() {
+    beerServiceImpl = new BeerServiceImpl();
+  }
 
   @Test
   @DisplayName("Create New Beer")
-  void testCreateNewBeer() throws JsonProcessingException {
+  void testCreateNewBeer() throws JsonProcessingException, Exception {
 //    ObjectMapper objectMapper = new ObjectMapper();
 //    objectMapper.findAndRegisterModules();
-    Beer beer = beerServiceImpl.listBeers().getFirst();
-    System.out.println(objectMapper.writeValueAsString(beer));
+    Beer beer = beerServiceImpl.listBeers().get(0);
+    beer.setVersion(null);
+    beer.setId(null);
+
+    given(beerService.saveNewBeer(any(Beer.class))).willReturn(beerServiceImpl.listBeers().get(1));
+
+    mockMvc.perform(post("/api/v1/beer")
+        .accept(MediaType.APPLICATION_JSON)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(beer)))
+      .andExpect(status().isCreated())
+      .andExpect(header().exists("Location"));
+//    System.out.println(objectMapper.writeValueAsString(beer));
   }
 
   @Test
