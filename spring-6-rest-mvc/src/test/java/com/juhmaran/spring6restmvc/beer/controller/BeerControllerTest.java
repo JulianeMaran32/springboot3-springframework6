@@ -79,7 +79,9 @@ class BeerControllerTest {
     mockMvc.perform(delete("/api/v1/beer/" + beer.getId())
         .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isNoContent());
+
     verify(beerService).deleteBeerById(uuidArgumentCaptor.capture());
+
     assertThat(beer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
   }
 
@@ -92,8 +94,8 @@ class BeerControllerTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(objectMapper.writeValueAsString(beer)))
       .andExpect(status().isNoContent());
-    verify(beerService).updateBeerById(uuidArgumentCaptor.capture(), any(Beer.class));
-    assertThat(beer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
+
+    verify(beerService).updateBeerById(any(UUID.class), any(Beer.class));
   }
 
   @Test

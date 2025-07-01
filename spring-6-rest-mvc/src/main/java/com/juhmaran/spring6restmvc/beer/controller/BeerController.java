@@ -23,22 +23,24 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class BeerController {
 
+  public static final String BEER_PATH_ID = "/{beerId}";
+
   private final BeerService beerService;
 
-  @PatchMapping("/{beerId}")
+  @PatchMapping(BEER_PATH_ID)
   public ResponseEntity<Void> updateBeerPatchById(@PathVariable(name = "beerId") UUID beerId,
                                                   @RequestBody Beer beer) {
     beerService.patchBeerById(beerId, beer);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping("/{beerId}")
+  @DeleteMapping(BEER_PATH_ID)
   public ResponseEntity<Void> deleteById(@PathVariable(name = "beerId") UUID beerId) {
     beerService.deleteBeerById(beerId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping("/{beerId}")
+  @PutMapping(BEER_PATH_ID)
   public ResponseEntity<Beer> updateById(@PathVariable(name = "beerId") UUID beerId,
                                          @RequestBody Beer beer) {
     beerService.updateBeerById(beerId, beer);
@@ -53,7 +55,7 @@ public class BeerController {
     return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
-  @GetMapping("/{beerId}")
+  @GetMapping(BEER_PATH_ID)
   public Beer getBeerById(@PathVariable(name = "beerId") UUID beerId) {
     log.debug("Get Beer by Id - in controller. Id: {}", beerId);
     return beerService.getBeerById(beerId);

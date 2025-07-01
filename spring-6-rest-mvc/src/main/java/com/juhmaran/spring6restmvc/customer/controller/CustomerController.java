@@ -23,23 +23,25 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CustomerController {
 
+  public static final String CUSTOMER_PATH_ID = "/{customerId}";
+
   private final CustomerService customerService;
 
-  @PatchMapping("/{customerId}")
+  @PatchMapping(CUSTOMER_PATH_ID)
   public ResponseEntity<Void> updateCustomerNameById(@PathVariable(name = "customerId") UUID customerId,
                                                      @RequestBody Customer customer) {
     customerService.patchCustomerById(customerId, customer);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping("/{customerId}")
+  @DeleteMapping(CUSTOMER_PATH_ID)
   public ResponseEntity<Void> deleteCustomerById(@PathVariable(name = "customerId") UUID customerId) {
     log.debug("Delete Customer by Id - in controller. Id: {}", customerId);
     customerService.deleteCustomerById(customerId);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping("/{customerId}")
+  @PutMapping(CUSTOMER_PATH_ID)
   public ResponseEntity<Void> updateCustomerByID(@PathVariable(name = "customerId") UUID customerId,
                                                  @RequestBody Customer customer) {
     log.debug("Update Customer by Id - in controller.");
@@ -56,7 +58,7 @@ public class CustomerController {
     return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
-  @GetMapping("/{customerId}")
+  @GetMapping(CUSTOMER_PATH_ID)
   public Customer getCustomerById(@PathVariable(name = "customerId") UUID customerId) {
     log.debug("Get Customer by Id - in controller.");
     return customerService.getCustomerById(customerId);
