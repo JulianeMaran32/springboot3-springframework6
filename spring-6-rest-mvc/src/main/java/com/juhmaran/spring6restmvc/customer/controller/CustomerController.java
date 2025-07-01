@@ -23,6 +23,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CustomerController {
 
+  public static final String CUSTOMER_PATH = "/api/v1/customer";
   public static final String CUSTOMER_PATH_ID = "/{customerId}";
 
   private final CustomerService customerService;
@@ -52,9 +53,8 @@ public class CustomerController {
   @PostMapping
   public ResponseEntity<Customer> saveNewCustomer(@RequestBody Customer customer) {
     Customer savedCustomer = customerService.saveNewCustomer(customer);
-    log.debug("Save new Customer - in controller: {}", savedCustomer.getId());
     HttpHeaders headers = new HttpHeaders();
-    headers.add(HttpHeaders.LOCATION, savedCustomer.getId().toString());
+    headers.add("Location", CUSTOMER_PATH + "/" + savedCustomer.getId().toString());
     return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
