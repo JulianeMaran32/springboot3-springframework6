@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -38,6 +39,9 @@ class BeerControllerTest {
 
   BeerServiceImpl beerServiceImpl;
 
+  @Captor
+  ArgumentCaptor<UUID> uuidArgumentCaptor;
+
   @BeforeEach
   void setUp() {
     beerServiceImpl = new BeerServiceImpl();
@@ -47,10 +51,9 @@ class BeerControllerTest {
   @DisplayName("Delete Beer")
   void testDeleteBeer() throws Exception {
     Beer beer = beerServiceImpl.listBeers().getFirst();
-    mockMvc.perform(put("/api/v1/beer/" + beer.getId())
+    mockMvc.perform(delete("/api/v1/beer/" + beer.getId())
         .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isNoContent());
-    ArgumentCaptor<UUID> uuidArgumentCaptor = ArgumentCaptor.forClass(UUID.class);
     verify(beerService).deleteBeerById(uuidArgumentCaptor.capture());
     assertThat(beer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
   }
@@ -64,7 +67,8 @@ class BeerControllerTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(objectMapper.writeValueAsString(beer)))
       .andExpect(status().isNoContent());
-    verify(beerService).updateBeerById(any(UUID.class), any(Beer.class));
+    verify(beerService).updateBeerById(uuidArgumentCaptor.capture(), any(Beer.class));
+    assertThat(beer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
   }
 
   @Test

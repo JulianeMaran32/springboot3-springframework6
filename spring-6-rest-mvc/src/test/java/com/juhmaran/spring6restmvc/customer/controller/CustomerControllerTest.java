@@ -7,6 +7,8 @@ import com.juhmaran.spring6restmvc.customer.services.impl.CustomerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -15,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -36,9 +39,23 @@ class CustomerControllerTest {
 
   CustomerServiceImpl customerServiceImpl;
 
+  @Captor
+  ArgumentCaptor<UUID> uuidArgumentCaptor;
+
   @BeforeEach
   void setUp() {
     customerServiceImpl = new CustomerServiceImpl();
+  }
+
+  @Test
+  @DisplayName("Delete Customer")
+  void testDeleteCustomer() throws Exception {
+    Customer customer = customerServiceImpl.getAllCustomers().getFirst();
+    mockMvc.perform(delete("/api/v1/customer/" + customer.getId())
+        .accept(MediaType.APPLICATION_JSON))
+      .andExpect(status().isNoContent());
+    verify(customerService).deleteCustomerById(uuidArgumentCaptor.capture());
+    assertThat(customer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
   }
 
   @Test
@@ -51,7 +68,8 @@ class CustomerControllerTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(objectMapper.writeValueAsString(customer)))
       .andExpect(status().isNoContent());
-    verify(customerService).updateCustomerById(any(UUID.class), any(Customer.class));
+    verify(customerService).updateCustomerById(uuidArgumentCaptor.capture(), any(Customer.class));
+    assertThat(customer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
   }
 
   @Test
