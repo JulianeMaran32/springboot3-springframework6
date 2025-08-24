@@ -2,8 +2,10 @@ package com.juhmaran.springframework.guru.bootstrap;
 
 import com.juhmaran.springframework.guru.domain.Author;
 import com.juhmaran.springframework.guru.domain.Book;
+import com.juhmaran.springframework.guru.domain.Publisher;
 import com.juhmaran.springframework.guru.repository.AuthorRepository;
 import com.juhmaran.springframework.guru.repository.BookRepository;
+import com.juhmaran.springframework.guru.repository.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,12 @@ public class BootstrapData implements CommandLineRunner {
 
   private final AuthorRepository authorRepository;
   private final BookRepository bookRepository;
+  private final PublisherRepository publisherRepository;
 
-  public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+  public BootstrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
     this.authorRepository = authorRepository;
     this.bookRepository = bookRepository;
+    this.publisherRepository = publisherRepository;
   }
 
   @Override
@@ -53,5 +57,13 @@ public class BootstrapData implements CommandLineRunner {
     System.out.println("Author Count: " + authorRepository.count());
     System.out.println("Book Count: " + bookRepository.count());
 
+    var publisher = new Publisher();
+    publisher.setPublisherName("My Publisher");
+    publisher.setAddress("123 Main");
+    publisherRepository.save(publisher);
+
+    System.out.println("Publisher Count: " + publisherRepository.count());
+
   }
+  
 }
