@@ -2,6 +2,7 @@ package com.juhmaran.springframework.guru.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,10 +16,17 @@ public class Book {
   private String isbn;
 
   @ManyToMany
-  @JoinTable(name = "author_book",
-    joinColumns = @JoinColumn(name = "book_id"),
+  @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
-  private Set<Author> authors;
+  private Set<Author> authors = new HashSet<>();
+
+  public Set<Author> getAuthors() {
+    return authors;
+  }
+
+  public void setAuthors(Set<Author> authors) {
+    this.authors = authors;
+  }
 
   public Long getId() {
     return id;
@@ -44,12 +52,27 @@ public class Book {
     this.isbn = isbn;
   }
 
-  public Set<Author> getAuthors() {
-    return authors;
+  @Override
+  public String toString() {
+    return "Book{" +
+      "id=" + id +
+      ", title='" + title + '\'' +
+      ", isbn='" + isbn + '\'' +
+      ", authors=" + authors +
+      '}';
   }
 
-  public void setAuthors(Set<Author> authors) {
-    this.authors = authors;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Book book)) return false;
+
+    return getId() != null ? getId().equals(book.getId()) : book.getId() == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return getId() != null ? getId().hashCode() : 0;
   }
 
 }
