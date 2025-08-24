@@ -1,15 +1,14 @@
-package com.juhmaran.springframework.dependencyinjection.controllers;
+package com.juhmaran.springframework.dependencyinjection.i18n.controller;
 
 import com.juhmaran.springframework.dependencyinjection.services.GreetingService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ConstructorInjectedController {
+public class Myi18NController {
 
   private final GreetingService greetingService;
 
-  public ConstructorInjectedController(@Qualifier("greetingServiceImpl") GreetingService greetingService) {
+  public Myi18NController(GreetingService greetingService) {
     this.greetingService = greetingService;
   }
 
