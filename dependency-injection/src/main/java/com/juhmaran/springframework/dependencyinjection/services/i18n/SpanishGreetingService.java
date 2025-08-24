@@ -4,9 +4,9 @@ import com.juhmaran.springframework.dependencyinjection.services.greeting.Greeti
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-//@Primary
-@Profile("ES")
-@Service("i18nService")
+@Profile({"ES", "default"})
+// @Profile("ES")
+@Service("i18NService")
 public class SpanishGreetingService implements GreetingService {
 
   @Override

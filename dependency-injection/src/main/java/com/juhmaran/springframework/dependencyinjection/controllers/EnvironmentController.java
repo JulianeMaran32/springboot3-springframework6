@@ -1,4 +1,4 @@
-package com.juhmaran.springframework.dependencyinjection.controllers.environment;
+package com.juhmaran.springframework.dependencyinjection.controllers;
 
 import com.juhmaran.springframework.dependencyinjection.services.environment.EnvironmentService;
 import org.springframework.stereotype.Controller;

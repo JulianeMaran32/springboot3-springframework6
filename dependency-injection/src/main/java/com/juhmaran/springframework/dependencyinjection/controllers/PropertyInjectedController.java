@@ -1,4 +1,4 @@
-package com.juhmaran.springframework.dependencyinjection.controllers.greeting;
+package com.juhmaran.springframework.dependencyinjection.controllers;
 
 import com.juhmaran.springframework.dependencyinjection.services.greeting.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;

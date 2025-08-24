@@ -4,9 +4,9 @@ import com.juhmaran.springframework.dependencyinjection.controllers.i18n.Myi18NC
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("EN")
+// Comment ou active profile to test use of default profile
+// @ActiveProfiles("EN")
 @SpringBootTest
 class MyI18nControllerTestEN {
 
