@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.guru.services;
 
 import com.juhmaran.springframework.guru.domain.Book;
-import com.juhmaran.springframework.guru.repository.BookRepository;
+import com.juhmaran.springframework.guru.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
 @Service
