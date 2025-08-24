@@ -1,6 +1,6 @@
-package com.juhmaran.springframework.guru.controllers;
+package com.juhmaran.springframework.guru.building.controllers;
 
-import com.juhmaran.springframework.guru.services.BookService;
+import com.juhmaran.springframework.guru.building.services.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

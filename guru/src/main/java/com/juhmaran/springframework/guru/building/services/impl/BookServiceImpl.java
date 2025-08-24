@@ -1,8 +1,8 @@
-package com.juhmaran.springframework.guru.services.impl;
+package com.juhmaran.springframework.guru.building.services.impl;
 
-import com.juhmaran.springframework.guru.domain.Book;
-import com.juhmaran.springframework.guru.repositories.BookRepository;
-import com.juhmaran.springframework.guru.services.BookService;
+import com.juhmaran.springframework.guru.building.domain.Book;
+import com.juhmaran.springframework.guru.building.repositories.BookRepository;
+import com.juhmaran.springframework.guru.building.services.BookService;
 import org.springframework.stereotype.Service;
 
 @Service

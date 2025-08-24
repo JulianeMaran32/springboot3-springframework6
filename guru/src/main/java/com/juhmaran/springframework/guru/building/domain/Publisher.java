@@ -1,4 +1,4 @@
-package com.juhmaran.springframework.guru.domain;
+package com.juhmaran.springframework.guru.building.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

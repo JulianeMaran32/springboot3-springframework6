@@ -1,6 +1,6 @@
-package com.juhmaran.springframework.guru.repositories;
+package com.juhmaran.springframework.guru.building.repositories;
 
-import com.juhmaran.springframework.guru.domain.Publisher;
+import com.juhmaran.springframework.guru.building.domain.Publisher;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,11 +1,11 @@
-package com.juhmaran.springframework.guru.bootstrap;
+package com.juhmaran.springframework.guru.building.bootstrap;
 
-import com.juhmaran.springframework.guru.domain.Author;
-import com.juhmaran.springframework.guru.domain.Book;
-import com.juhmaran.springframework.guru.domain.Publisher;
-import com.juhmaran.springframework.guru.repositories.AuthorRepository;
-import com.juhmaran.springframework.guru.repositories.BookRepository;
-import com.juhmaran.springframework.guru.repositories.PublisherRepository;
+import com.juhmaran.springframework.guru.building.domain.Author;
+import com.juhmaran.springframework.guru.building.domain.Book;
+import com.juhmaran.springframework.guru.building.domain.Publisher;
+import com.juhmaran.springframework.guru.building.repositories.AuthorRepository;
+import com.juhmaran.springframework.guru.building.repositories.BookRepository;
+import com.juhmaran.springframework.guru.building.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

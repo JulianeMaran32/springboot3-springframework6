@@ -1,8 +1,8 @@
-package com.juhmaran.springframework.guru.services.impl;
+package com.juhmaran.springframework.guru.building.services.impl;
 
-import com.juhmaran.springframework.guru.domain.Author;
-import com.juhmaran.springframework.guru.repositories.AuthorRepository;
-import com.juhmaran.springframework.guru.services.AuthorService;
+import com.juhmaran.springframework.guru.building.domain.Author;
+import com.juhmaran.springframework.guru.building.repositories.AuthorRepository;
+import com.juhmaran.springframework.guru.building.services.AuthorService;
 import org.springframework.stereotype.Service;
 
 @Service
