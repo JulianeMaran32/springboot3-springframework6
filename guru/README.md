@@ -1,5 +1,13 @@
 # Guru
 
+Abrir no browser utilizando o Thymeleaf Templates
+
+**Exemplo de URL**
+
+```
+http://localhost:63342/guru/templates/books.html?_ijt=t56ivfglattctq1hkdnuedlpm3&_ij_reload=RELOAD_ON_SAVE
+```
+
 ## Exemplo de Sucesso - Book
 
 **Request**
@@ -53,4 +61,5 @@ curl --location 'http://localhost:8080/books'
   "path": "/books"
 }
 ```
+
 
