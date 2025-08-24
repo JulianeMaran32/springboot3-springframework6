@@ -13,7 +13,7 @@ public class MyController {
     this.greetingService = new GreetingServiceImpl();
   }
 
-  public String sayHello() {
+  public String sayHello(){
     System.out.println("I'm in the controller");
 
     return greetingService.sayGreeting();
