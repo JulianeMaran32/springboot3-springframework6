@@ -1,6 +1,5 @@
-package com.juhmaran.springframework.dependencyinjection.services;
+package com.juhmaran.springframework.dependencyinjection.services.greeting;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 // @Primary

@@ -1,6 +1,6 @@
-package com.juhmaran.springframework.dependencyinjection.i18n.service;
+package com.juhmaran.springframework.dependencyinjection.services.i18n;
 
-import com.juhmaran.springframework.dependencyinjection.services.GreetingService;
+import com.juhmaran.springframework.dependencyinjection.services.greeting.GreetingService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 

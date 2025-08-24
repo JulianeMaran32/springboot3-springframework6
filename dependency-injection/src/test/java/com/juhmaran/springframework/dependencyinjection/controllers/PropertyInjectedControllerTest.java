@@ -1,5 +1,6 @@
 package com.juhmaran.springframework.dependencyinjection.controllers;
 
+import com.juhmaran.springframework.dependencyinjection.controllers.greeting.PropertyInjectedController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

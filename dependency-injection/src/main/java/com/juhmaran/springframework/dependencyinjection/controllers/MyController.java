@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.dependencyinjection.controllers;
 
-import com.juhmaran.springframework.dependencyinjection.services.GreetingService;
-import com.juhmaran.springframework.dependencyinjection.services.GreetingServiceImpl;
+import com.juhmaran.springframework.dependencyinjection.services.greeting.GreetingService;
+import com.juhmaran.springframework.dependencyinjection.services.greeting.GreetingServiceImpl;
 import org.springframework.stereotype.Controller;
 
 @Controller

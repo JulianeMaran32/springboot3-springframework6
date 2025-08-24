@@ -1,6 +1,6 @@
 package com.juhmaran.springframework.dependencyinjection.i18n;
 
-import com.juhmaran.springframework.dependencyinjection.i18n.controller.Myi18NController;
+import com.juhmaran.springframework.dependencyinjection.controllers.i18n.Myi18NController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
