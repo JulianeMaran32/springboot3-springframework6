@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: beer
+
+logging:
+  level:
+    com.juhmaran.springframework.beer: debug
