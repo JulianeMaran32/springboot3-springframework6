@@ -234,7 +234,7 @@ curl --location 'http://localhost:8080/api/v1/customer' \
 
 **Response**
 
-Status HTTP: 201 Created
+- Status HTTP: 201 Created
 
 ```bash
 POST /api/v1/customer HTTP/1.1
@@ -267,14 +267,20 @@ Connection: keep-alive
 **cURL - Request**
 
 ```
-
+curl --location --request PUT 'http://localhost:8080/api/v1/beer/dcbf93f1-90a6-448a-bd81-005cce0e1705' \
+--header 'Content-Type: application/json' \
+--data '{
+    "beerName": "Crank",
+    "beerStyle": "PALE_ALE",
+    "upc": "12356222",
+    "quantityOnHand": 390,
+    "price": 11.99
+}'
 ```
 
 **Response**
 
-```json
-
-```
+- Status HTTP: 204 No Content
 
 ---
 
