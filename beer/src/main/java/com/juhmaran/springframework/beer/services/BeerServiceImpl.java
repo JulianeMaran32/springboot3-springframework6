@@ -60,13 +60,13 @@ public class BeerServiceImpl implements BeerService {
   }
 
   @Override
-  public List<Beer> listBeers() {
+  public List<Beer> listBeers(){
     return new ArrayList<>(beerMap.values());
   }
 
   @Override
   public Beer getBeerById(UUID id) {
-    log.debug("Get Beer by Id - in service. Id: {}", id.toString());
+    log.debug("Get Beer by Id - in service. Id: " + id.toString());
     return beerMap.get(id);
   }
 
@@ -74,6 +74,7 @@ public class BeerServiceImpl implements BeerService {
   public Beer saveNewBeer(Beer beer) {
     var savedBeer = Beer.builder()
       .id(UUID.randomUUID())
+      .version(1)
       .createdDate(LocalDateTime.now())
       .updateDate(LocalDateTime.now())
       .beerName(beer.getBeerName())

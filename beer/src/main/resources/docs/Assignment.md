@@ -23,13 +23,22 @@ _Implement GET customer operations_
 
 ## HTTP POST with Spring MVC
 
+_Handle HTTP Post for Create new Customer_
+
 ### Instruções
+
+* Assignment - Handle HTTP Post for Create new Customer
+* Create Controller method to handle post
+* Update Request Mapping
+* Save to in-memory hash map
+* Return 201 status with location of created customer object
 
 ### Pergunta
 
-* **Xxxxxxxxxxxxxxxxxx**
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* **What does the HTTP status 201 mean?**
+    * **Minha Resposta:** HTTP Status 201 means creating a resource.
+    * **Resposta do Instrutor:** HTTP 201 means created. The server response to indicate the resource was created
+      successfully.
 
 ## HTTP PUT with Spring MVC
 

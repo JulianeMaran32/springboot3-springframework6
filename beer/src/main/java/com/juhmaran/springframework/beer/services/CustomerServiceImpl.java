@@ -11,7 +11,7 @@ import java.util.*;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-  private final Map<UUID, Customer> customerMap;
+  private Map<UUID, Customer> customerMap;
 
   public CustomerServiceImpl() {
     Customer customer1 = Customer.builder()
@@ -42,6 +42,22 @@ public class CustomerServiceImpl implements CustomerService {
     customerMap.put(customer1.getId(), customer1);
     customerMap.put(customer2.getId(), customer2);
     customerMap.put(customer3.getId(), customer3);
+  }
+
+  @Override
+  public Customer saveNewCustomer(Customer customer) {
+
+    Customer savedCustomer = Customer.builder()
+      .id(UUID.randomUUID())
+      .version(1)
+      .updateDate(LocalDateTime.now())
+      .createdDate(LocalDateTime.now())
+      .name(customer.getName())
+      .build();
+
+    customerMap.put(savedCustomer.getId(), savedCustomer);
+
+    return savedCustomer;
   }
 
   @Override

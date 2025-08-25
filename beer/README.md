@@ -228,7 +228,7 @@ curl --location --globoff 'http://localhost:8080/api/v1/customer/{customerId}'
 curl --location 'http://localhost:8080/api/v1/customer' \
 --header 'Content-Type: application/json' \
 --data '{
-    "name": "string"
+    "name": "José da Silva"
 }'
 ```
 
@@ -237,7 +237,27 @@ curl --location 'http://localhost:8080/api/v1/customer' \
 Status HTTP: 201 Created
 
 ```bash
-
+POST /api/v1/customer HTTP/1.1
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.45.0
+Accept: */*
+Cache-Control: no-cache
+Postman-Token: 07f1c871-876d-4b25-becc-a7f415ac0a66
+Host: localhost:8080
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Length: 34
+ 
+{
+"name": "José da Silva"
+}
+ 
+HTTP/1.1 201 Created
+Location: /api/v1/customer/a2ebf9f8-4c50-49ff-8071-2c75e28f5023
+Content-Length: 0
+Date: Mon, 25 Aug 2025 11:02:43 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
 ```
 
 ---
