@@ -18,7 +18,7 @@ public class BeerServiceImpl implements BeerService {
   public BeerServiceImpl() {
     this.beerMap = new HashMap<>();
 
-    Beer beer1 = Beer.builder()
+    var beer1 = Beer.builder()
       .id(UUID.randomUUID())
       .version(1)
       .beerName("Galaxy Cat")
@@ -30,7 +30,7 @@ public class BeerServiceImpl implements BeerService {
       .updateDate(LocalDateTime.now())
       .build();
 
-    Beer beer2 = Beer.builder()
+    var beer2 = Beer.builder()
       .id(UUID.randomUUID())
       .version(1)
       .beerName("Crank")
@@ -42,7 +42,7 @@ public class BeerServiceImpl implements BeerService {
       .updateDate(LocalDateTime.now())
       .build();
 
-    Beer beer3 = Beer.builder()
+    var beer3 = Beer.builder()
       .id(UUID.randomUUID())
       .version(1)
       .beerName("Sunshine City")
@@ -68,6 +68,22 @@ public class BeerServiceImpl implements BeerService {
   public Beer getBeerById(UUID id) {
     log.debug("Get Beer by Id - in service. Id: {}", id.toString());
     return beerMap.get(id);
+  }
+
+  @Override
+  public Beer saveNewBeer(Beer beer) {
+    var savedBeer = Beer.builder()
+      .id(UUID.randomUUID())
+      .createdDate(LocalDateTime.now())
+      .updateDate(LocalDateTime.now())
+      .beerName(beer.getBeerName())
+      .beerStyle(beer.getBeerStyle())
+      .quantityOnHand(beer.getQuantityOnHand())
+      .upc(beer.getUpc())
+      .price(beer.getPrice())
+      .build();
+    beerMap.put(savedBeer.getId(), savedBeer);
+    return savedBeer;
   }
 
 }
