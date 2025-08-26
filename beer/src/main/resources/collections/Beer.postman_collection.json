@@ -1,0 +1,935 @@
+{
+	"info": {
+		"_postman_id": "c4ee6549-e2e4-4d7f-b5a1-ba0bbdc57024",
+		"name": "Beer",
+		"description": "**Curso:** \\[NEW\\] Spring Boot 3, Spring Framework 6: Beginner to Guru\n\nAPI de referência: [https://sfg-beer-works.github.io/brewery-api/](https://sfg-beer-works.github.io/brewery-api/)\n\n**Beer Service**\n\n- `GET` List Beers `/beer`\n    \n- `POST` Create New Beer `/beer`\n    \n- `GET` Get Beer by ID `/beer/{beerId}`\n    \n- `PUT` Update Beer by ID `/beer/{beerId}`\n    \n- `DELETE` Delete Beer by ID `/beer/{beerId}`\n    \n- `GET` Get Beer by UPC `/beerUpc/{upc}`\n    \n\n**Order Service**\n\n- `POST` Register as new customer `/customers`\n    \n- `GET` Get Customer by ID `/customers/{customerId}`\n    \n- `PUT` Update Customer by ID `/customers/{customerId}`\n    \n- `GET` List Orders `/customers/{customerId}/orders`\n    \n- `POST` Create Order (Place Order) `/customers/{customerId}/orders`\n    \n- `GET` Get Order by ID `/customers/{customerId}/orders/{orderId}`\n    \n- `PUT` Pickup Order `/customers/{customerId}/orders/{orderId}/pickup`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13771815",
+		"_collection_link": "https://juh-maran.postman.co/workspace/My-Personal-Projects~a097d75e-e3e7-4d08-ac97-0c27667a354a/collection/13771815-c4ee6549-e2e4-4d7f-b5a1-ba0bbdc57024?action=share&source=collection_link&creator=13771815"
+	},
+	"item": [
+		{
+			"name": "Beer Service",
+			"item": [
+				{
+					"name": "List Beers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Aug 2025 23:40:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"32aa45e0-6155-4c05-9923-f8ae38f90109\",\n        \"version\": 1,\n        \"beerName\": \"Crank\",\n        \"beerStyle\": \"PALE_ALE\",\n        \"upc\": \"12356222\",\n        \"quantityOnHand\": 392,\n        \"price\": 11.99,\n        \"createdDate\": \"2025-08-24T20:40:05.9140668\",\n        \"updateDate\": \"2025-08-24T20:40:05.9140668\"\n    },\n    {\n        \"id\": \"048fb4c8-b412-4e53-b98f-67084d2d3f43\",\n        \"version\": 1,\n        \"beerName\": \"Galaxy Cat\",\n        \"beerStyle\": \"PALE_ALE\",\n        \"upc\": \"12356\",\n        \"quantityOnHand\": 122,\n        \"price\": 12.99,\n        \"createdDate\": \"2025-08-24T20:40:05.9130553\",\n        \"updateDate\": \"2025-08-24T20:40:05.9130553\"\n    },\n    {\n        \"id\": \"53310740-c4bc-4802-af3f-ecd63e17c6ce\",\n        \"version\": 1,\n        \"beerName\": \"Sunshine City\",\n        \"beerStyle\": \"IPA\",\n        \"upc\": \"12356\",\n        \"quantityOnHand\": 144,\n        \"price\": 13.99,\n        \"createdDate\": \"2025-08-24T20:40:05.9140668\",\n        \"updateDate\": \"2025-08-24T20:40:05.9140668\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Beer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer/f7995058-436c-483e-8e91-61df2515a98f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer",
+								"f7995058-436c-483e-8e91-61df2515a98f"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer/f7995058-436c-483e-8e91-61df2515a98f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer",
+										"f7995058-436c-483e-8e91-61df2515a98f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 01:01:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f7995058-436c-483e-8e91-61df2515a98f\",\n    \"version\": null,\n    \"beerName\": \"Crank\",\n    \"beerStyle\": \"PALE_ALE\",\n    \"upc\": \"12356222\",\n    \"quantityOnHand\": 392,\n    \"price\": 11.99,\n    \"createdDate\": \"2025-08-24T22:01:10.2563538\",\n    \"updateDate\": \"2025-08-24T22:01:10.2563538\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New Beer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beerName\": \"Crank\",\r\n    \"beerStyle\": \"PALE_ALE\",\r\n    \"upc\": \"12356222\",\r\n    \"quantityOnHand\": 392,\r\n    \"price\": 11.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"beerName\": \"Crank\",\r\n    \"beerStyle\": \"PALE_ALE\",\r\n    \"upc\": \"12356222\",\r\n    \"quantityOnHand\": 392,\r\n    \"price\": 11.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Location",
+									"value": "/api/v1/beer/dfea947a-adea-4008-b162-1f594d761657"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 01:07:21 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Beer By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beerName\": \"Crank\",\r\n    \"beerStyle\": \"PALE_ALE\",\r\n    \"upc\": \"12356222\",\r\n    \"quantityOnHand\": 390,\r\n    \"price\": 11.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer/dcbf93f1-90a6-448a-bd81-005cce0e1705",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer",
+								"dcbf93f1-90a6-448a-bd81-005cce0e1705"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"beerName\": \"Crank\",\r\n    \"beerStyle\": \"PALE_ALE\",\r\n    \"upc\": \"12356222\",\r\n    \"quantityOnHand\": 390,\r\n    \"price\": 11.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer/dcbf93f1-90a6-448a-bd81-005cce0e1705",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer",
+										"dcbf93f1-90a6-448a-bd81-005cce0e1705"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 25 Aug 2025 16:38:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete Beer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer/08a5e479-5ee5-476c-8c38-44dea65b710a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer",
+								"08a5e479-5ee5-476c-8c38-44dea65b710a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer/08a5e479-5ee5-476c-8c38-44dea65b710a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer",
+										"08a5e479-5ee5-476c-8c38-44dea65b710a"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 12:54:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Patch Beer By ID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantityOnHand\": 105\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/beer/7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"beer",
+								"7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantityOnHand\": 105\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/beer/7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"beer",
+										"7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 16:37:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order Service",
+			"item": [
+				{
+					"name": "List Customer Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 00:24:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"dd49fd83-f2cc-448c-9d3a-3f621eb5c354\",\n        \"version\": 1,\n        \"name\": \"Customer 3\",\n        \"createdDate\": \"2025-08-25T21:23:32.017548\",\n        \"updateDate\": \"2025-08-25T21:23:32.017548\"\n    },\n    {\n        \"id\": \"f54d9ee9-70e6-4629-a394-6712f51ceb99\",\n        \"version\": 1,\n        \"name\": \"Customer 1\",\n        \"createdDate\": \"2025-08-25T21:23:32.017548\",\n        \"updateDate\": \"2025-08-25T21:23:32.017548\"\n    },\n    {\n        \"id\": \"6052e994-efeb-4858-ba39-8b11e15a1daf\",\n        \"version\": 1,\n        \"name\": \"Customer 2\",\n        \"createdDate\": \"2025-08-25T21:23:32.017548\",\n        \"updateDate\": \"2025-08-25T21:23:32.017548\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"f54d9ee9-70e6-4629-a394-6712f51ceb99"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"f54d9ee9-70e6-4629-a394-6712f51ceb99"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 00:25:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f54d9ee9-70e6-4629-a394-6712f51ceb99\",\n    \"version\": 1,\n    \"name\": \"Customer 1\",\n    \"createdDate\": \"2025-08-25T21:23:32.017548\",\n    \"updateDate\": \"2025-08-25T21:23:32.017548\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"José da Silva\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"José da Silva\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Location",
+									"value": "/api/v1/customer/b6f68888-19f7-47e2-ab8e-fd733ca03100"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 00:25:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update By Customer ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"José da Silva\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"f54d9ee9-70e6-4629-a394-6712f51ceb99"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"José da Silva\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"f54d9ee9-70e6-4629-a394-6712f51ceb99"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 00:26:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete Customer By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/2fc46a08-a6b2-404b-a3fe-b4d4e3289015",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"2fc46a08-a6b2-404b-a3fe-b4d4e3289015"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer/2fc46a08-a6b2-404b-a3fe-b4d4e3289015",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"2fc46a08-a6b2-404b-a3fe-b4d4e3289015"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 16:22:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria do Carmo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/customer/6baa2b63-6ec4-4833-b261-09b105de3c53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"6baa2b63-6ec4-4833-b261-09b105de3c53"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "204 No Content",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Maria do Carmo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/customer/6baa2b63-6ec4-4833-b261-09b105de3c53",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"customer",
+										"6baa2b63-6ec4-4833-b261-09b105de3c53"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 26 Aug 2025 16:58:07 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	]
+}
