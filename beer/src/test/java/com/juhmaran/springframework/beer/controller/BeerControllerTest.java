@@ -1,10 +1,10 @@
 package com.juhmaran.springframework.beer.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juhmaran.springframework.beer.model.Beer;
 import com.juhmaran.springframework.beer.services.BeerService;
 import com.juhmaran.springframework.beer.services.BeerServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -13,8 +13,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.Is.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(BeerController.class)
@@ -29,14 +31,27 @@ class BeerControllerTest {
   @MockitoBean
   BeerService beerService;
 
-  BeerServiceImpl beerServiceImpl = new BeerServiceImpl();
+  BeerServiceImpl beerServiceImpl;
+
+  @BeforeEach
+  void setUp() {
+    beerServiceImpl = new BeerServiceImpl();
+  }
 
   @Test
-  void testCreateNewBeer() throws JsonProcessingException {
+  void testCreateNewBeer() throws Exception {
     Beer beer = beerServiceImpl.listBeers().get(0);
+    beer.setVersion(null);
+    beer.setId(null);
 
-    System.out.println(objectMapper.writeValueAsString(beer));
+    given(beerService.saveNewBeer(any(Beer.class))).willReturn(beerServiceImpl.listBeers().get(1));
 
+    mockMvc.perform(post("/api/v1/beer")
+        .accept(MediaType.APPLICATION_JSON)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(beer)))
+      .andExpect(status().isCreated())
+      .andExpect(header().exists("Location"));
   }
 
   @Test
