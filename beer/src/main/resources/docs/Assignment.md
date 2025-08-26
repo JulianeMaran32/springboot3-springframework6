@@ -151,13 +151,24 @@ _Use Spring MockMVC and Mockito to test Update endpoint for Customer_
 
 ### Test Delete Customer
 
+_Use Spring MockMVC and Mockito to test Delete endpoint for Customer_
+
 #### Instruções
+
+* Use Spring MockMVC and Mockito to test Delete endpoint for Customer
+* Write test for Delete of Customer
+* Verify HTTP 204 is returned
+* Verify Mockito Mock delete method is called
+* Verify the proper UUID is sent to the delete method using an Argument Captor
 
 #### Pergunta
 
-* ?
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* Could you implement a delete operation by passing the Id to delete in the request body?
+    * **Minha Resposta:** **No, it's not recommended**. The `DELETE` method should typically include the ID in the URL
+      path (e.g., `/api/items/{id}`). While technically possible to send an ID in the request body, it violates RESTful
+      principles, can cause compatibility issues, and is generally considered bad practice for `DELETE` operations.
+    * **Resposta do Instrutor:** In theory you could do this, BUT this is not considered a best practice. Each resource
+      should have a unique URL. The unique URL should be used with the HTTP `DELETE` method to delete a resource.
 
 ### Test patch Customer
 
