@@ -182,12 +182,18 @@ curl --location --request DELETE 'http://localhost:8080/api/v1/beer/08a5e479-5ee
 
 - Status HTTP: 204 No Content
 
-### PATCH /beer
+### PATCH /beer/{beerId}
+
+Atualiza apenas um campo da entidade Beer.
 
 **cURL - Request**
 
 ```
-
+curl --location --request PATCH 'http://localhost:8080/api/v1/beer/7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782' \
+--header 'Content-Type: application/json' \
+--data '{
+    "quantityOnHand": 105
+}'
 ```
 
 **Response**
