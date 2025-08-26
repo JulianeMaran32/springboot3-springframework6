@@ -1,17 +1,17 @@
 # Assignment
 
-## GET Customer
+## HTTP GET with Spring MVC
 
-_Implement GET customer operations_
+_Implement `GET` customer operations_
 
 ### Instruções
 
-* Assignment is to implement GET customer operations
-* Customer simple POJO of `customerName`, `id`, `version`, `createdDate`, `lastModifiedDate`
-* Use Project Lombok
-* Create Service, use Map to store 2-3 customers
-* Create Controller Endpoint to list all customers
-* Create Controller Endpoint to get customer by id
+* Assignment is to implement `GET` customer operations.
+* Customer simple POJO of `customerName`, `id`, `version`, `createdDate`, `lastModifiedDate`.
+* Use Project Lombok.
+* Create Service, use Map to store 2-3 customers.
+* Create Controller Endpoint to **list all customers**.
+* Create Controller Endpoint to **get customer by id**.
 
 ### Pergunta
 
@@ -21,13 +21,13 @@ _Implement GET customer operations_
     * **Resposta do Instrutor:** Simply implement the desired getter method. Lombok will not generate the method if one
       is provided.
 
-## HTTP POST with Spring MVC
+## HTTP `POST` with Spring MVC
 
-_Handle HTTP Post for Create new Customer_
+_Handle HTTP POST` for Create new Customer_
 
 ### Instruções
 
-* Assignment - Handle HTTP Post for Create new Customer
+* Assignment - Handle HTTP POST` for Create new Customer
 * Create Controller method to handle post
 * Update Request Mapping
 * Save to in-memory hash map
@@ -36,46 +36,54 @@ _Handle HTTP Post for Create new Customer_
 ### Pergunta
 
 * What does the HTTP status 201 mean?
-    * **Minha Resposta:** HTTP Status 201 means creating a resource.
-    * **Resposta do Instrutor:** HTTP 201 means created. The server response to indicate the resource was created
+    * **Minha Resposta:** `HTTP Status 201` means creating a resource.
+    * **Resposta do Instrutor:** `HTTP 201` means `created`. The server response to indicate the resource was created
       successfully.
 
-## HTTP PUT with Spring MVC
+## HTTP `PUT` with Spring MVC
 
-_Implement HTTP Put endpoint to update existing customer_
+_Implement HTTP `PUT` endpoint to update existing customer_
 
 ### Instruções
 
-* Implement HTTP Put endpoint to update existing customer
+* Implement HTTP `PUT` endpoint to update existing customer
 
 ### Pergunta
 
 * What is special about the `@PutMapping` annotation?
-    * **Minha Resposta:** The `@PutMapping` annotation in Spring is used to map HTTP PUT requests to specific methods in
-      a controller, indicating that this action should be used to update an existing resource.
-    * **Resposta do Instrutor:** The `@PutMapping` annotation will limit the method to responding to HTTP PUT requests
+    * **Minha Resposta:** The `@PutMapping` annotation in Spring is used to map `HTTP PUT` requests to specific methods
+      in a controller, indicating that this action should be used to update an existing resource.
+    * **Resposta do Instrutor:** The `@PutMapping` annotation will limit the method to responding to `HTTP PUT` requests
       only.
 
-## HTTP DELETE with Spring MVC
+## HTTP `DELETE` with Spring MVC
 
 ### Instruções
 
-* Implement HTTP Delete endpoint to delete existing customer
+* Implement HTTP `DELETE` endpoint to delete existing customer
 
 ### Pergunta
 
 * Should you return a content body in a delete operation?
-    * **Minha Resposta:** In a DELETE operation, it is best not to return a content body, especially if the delete was
-      successful. The HTTP status code 204 No Content is the safest way to indicate that the request was successful and
-      that there is no content to return in the response.
-    * **Resposta do Instrutor:** No, delete operations should just return a HTTP 204 No Content status.
+    * **Minha Resposta:** In a `DELETE` operation, it is best not to return a content body, especially if the delete was
+      successful. The HTTP status code `204 No Content` is the safest way to indicate that the request was successful
+      and that there is no content to return in the response.
+    * **Resposta do Instrutor:** No, delete operations should just return a HTTP `204 No Content` status.
 
-## HTTP PATCH with Spring MVC
+## HTTP `PATCH` with Spring MVC
+
+_Implement `PATCH` endpoint for customer._
 
 ### Instruções
 
+* Implement `PATCH` endpoint for customer.
+* Create Service method for patch operation
+
 ### Pergunta
 
-* ?
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* How is a HTTP Patch operation different from an update operation?
+    * **Minha Resposta:** An `HTTP PATCH` operation is for making partial updates to a resource, while `PUT` is for
+      replacing the entire resource. In essence, `PATCH` allows you to send only the changes you want to apply, whereas
+      `PUT` requires you to send the complete representation of the updated resource.
+    * **Resposta do Instrutor:** A `PATCH` operation allows you to update specific properties, while an update operation
+      will update all properties.

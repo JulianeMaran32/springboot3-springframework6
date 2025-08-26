@@ -341,7 +341,11 @@ curl --location --request DELETE 'http://localhost:8080/api/v1/customer/2fc46a08
 **cURL - Request**
 
 ```
-
+curl --location --request PATCH 'http://localhost:8080/api/v1/customer/6baa2b63-6ec4-4833-b261-09b105de3c53' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Maria do Carmo"
+}'
 ```
 
 **Response**
