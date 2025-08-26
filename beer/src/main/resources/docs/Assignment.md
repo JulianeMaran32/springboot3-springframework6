@@ -172,13 +172,23 @@ _Use Spring MockMVC and Mockito to test Delete endpoint for Customer_
 
 ### Test patch Customer
 
+_Use Spring MockMVC and Mockito to test Patch endpoint for Customer_
+
 #### Instruções
+
+* Use Spring MockMVC and Mockito to test Patch endpoint for Customer
+* Write test for Patch of Customer
+* Verify HTTP 204 is returned
+* Verify Mockito Mock patch method is called
+* Verify the proper UUID is sent to the patch method using an Argument Captor
+* Verify the proper value is sent for the Customer property update
 
 #### Pergunta
 
-* ?
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* How do you verify the proper value is sent to the service method?
+    * **Minha Resposta:** I use Mockito's `ArgumentCaptor`. It captures the actual argument passed to a mock, so I can
+      then run assertions on it to verify its value.
+    * **Resposta do Instrutor:** You can verify this by using a Mockito Mock with an argument captor.
 
 ---
 
