@@ -1,5 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juhmaran.springframework.beer.model.Beer;
 import com.juhmaran.springframework.beer.services.BeerService;
 import com.juhmaran.springframework.beer.services.BeerServiceImpl;
@@ -21,10 +23,21 @@ class BeerControllerTest {
   @Autowired
   MockMvc mockMvc;
 
+  @Autowired
+  ObjectMapper objectMapper;
+
   @MockitoBean
   BeerService beerService;
 
   BeerServiceImpl beerServiceImpl = new BeerServiceImpl();
+
+  @Test
+  void testCreateNewBeer() throws JsonProcessingException {
+    Beer beer = beerServiceImpl.listBeers().get(0);
+
+    System.out.println(objectMapper.writeValueAsString(beer));
+
+  }
 
   @Test
   void testListBeers() throws Exception {
