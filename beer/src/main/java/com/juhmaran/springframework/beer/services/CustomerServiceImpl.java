@@ -14,7 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
   private Map<UUID, Customer> customerMap;
 
   public CustomerServiceImpl() {
-    Customer customer1 = Customer.builder()
+    var customer1 = Customer.builder()
       .id(UUID.randomUUID())
       .name("Customer 1")
       .version(1)
@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
       .updateDate(LocalDateTime.now())
       .build();
 
-    Customer customer2 = Customer.builder()
+    var customer2 = Customer.builder()
       .id(UUID.randomUUID())
       .name("Customer 2")
       .version(1)
@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
       .updateDate(LocalDateTime.now())
       .build();
 
-    Customer customer3 = Customer.builder()
+    var customer3 = Customer.builder()
       .id(UUID.randomUUID())
       .name("Customer 3")
       .version(1)
@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
   @Override
   public Customer saveNewCustomer(Customer customer) {
 
-    Customer savedCustomer = Customer.builder()
+    var savedCustomer = Customer.builder()
       .id(UUID.randomUUID())
       .version(1)
       .updateDate(LocalDateTime.now())
@@ -58,6 +58,12 @@ public class CustomerServiceImpl implements CustomerService {
     customerMap.put(savedCustomer.getId(), savedCustomer);
 
     return savedCustomer;
+  }
+
+  @Override
+  public void updateCustomerById(UUID customerId, Customer customer) {
+    Customer existing = customerMap.get(customerId);
+    existing.setName(customer.getName());
   }
 
   @Override

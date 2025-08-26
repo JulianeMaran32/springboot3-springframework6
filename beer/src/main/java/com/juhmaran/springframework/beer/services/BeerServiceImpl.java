@@ -66,7 +66,7 @@ public class BeerServiceImpl implements BeerService {
 
   @Override
   public Beer getBeerById(UUID id) {
-    log.debug("Get Beer by Id - in service. Id: " + id.toString());
+    log.debug("Get Beer by Id - in service. Id: {}", id.toString());
     return beerMap.get(id);
   }
 
@@ -94,7 +94,6 @@ public class BeerServiceImpl implements BeerService {
     existing.setPrice(beer.getPrice());
     existing.setUpc(beer.getUpc());
     existing.setQuantityOnHand(beer.getQuantityOnHand());
-    beerMap.put(existing.getId(), existing);
   }
 
 }

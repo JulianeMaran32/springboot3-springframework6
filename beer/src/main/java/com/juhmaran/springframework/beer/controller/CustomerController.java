@@ -20,6 +20,13 @@ public class CustomerController {
 
   private final CustomerService customerService;
 
+  @PutMapping("{customerId}")
+  public ResponseEntity updateCustomerByID(@PathVariable("customerId") UUID customerId,
+                                           @RequestBody Customer customer) {
+    customerService.updateCustomerById(customerId, customer);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
+  }
+
   @PostMapping
   public ResponseEntity handlePost(@RequestBody Customer customer) {
     Customer savedCustomer = customerService.saveNewCustomer(customer);
@@ -33,7 +40,7 @@ public class CustomerController {
     return customerService.getAllCustomers();
   }
 
-  @GetMapping(value = "{customerId}")
+  @GetMapping("{customerId}")
   public Customer getCustomerById(@PathVariable("customerId") UUID id) {
     return customerService.getCustomerById(id);
   }

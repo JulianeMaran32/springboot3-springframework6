@@ -42,13 +42,19 @@ _Handle HTTP Post for Create new Customer_
 
 ## HTTP PUT with Spring MVC
 
+_Implement HTTP Put endpoint to update existing customer_
+
 ### Instruções
+
+* Implement HTTP Put endpoint to update existing customer
 
 ### Pergunta
 
-* **Xxxxxxxxxxxxxxxxxx**
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* **What is special about the `@PutMapping` annotation?**
+    * **Minha Resposta:** The `@PutMapping` annotation in Spring is used to map HTTP PUT requests to specific methods in
+      a controller, indicating that this action should be used to update an existing resource.
+    * **Resposta do Instrutor:** The `@PutMapping` annotation will limit the method to responding to HTTP PUT requests
+      only.
 
 ## HTTP DELETE with Spring MVC
 
