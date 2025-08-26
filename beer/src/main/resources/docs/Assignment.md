@@ -114,15 +114,23 @@ _Implement `PATCH` endpoint for customer._
     * **Resposta do Instrutor:** Spring MockMVC allows you to test the controller interactions in a servlet context
       without the application running in a application server.
 
-### Test Xxxxxx
+### Test Create Customer
+
+_Use Spring MockMVC and Mockito to test Create endpoint for Customer_
 
 #### Instruções
 
+* Use Spring MockMVC and Mockito to test Create endpoint for Customer
+* Write test to test creation of customer
+* Update Test to re-create CustomerServiceImpl before each test
+* Verify HTTP 201 is returned
+* Verify Location Header is returned
+
 #### Pergunta
 
-* Why use Spring MockMVC?
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* What HTTP method is used to create a new resource?
+    * **Minha Resposta:** The HTTP method used to create a new resource is `POST`.
+    * **Resposta do Instrutor:** HTTP `POST` is used to create a new resource.
 
 ---
 
