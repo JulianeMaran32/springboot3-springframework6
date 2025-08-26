@@ -273,7 +273,11 @@ Connection: keep-alive
 **cURL - Request**
 
 ```
-
+curl --location --request PUT 'http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "José da Silva"
+}'
 ```
 
 **Response**
