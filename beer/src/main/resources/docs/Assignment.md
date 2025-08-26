@@ -132,6 +132,43 @@ _Use Spring MockMVC and Mockito to test Create endpoint for Customer_
     * **Minha Resposta:** The HTTP method used to create a new resource is `POST`.
     * **Resposta do Instrutor:** HTTP `POST` is used to create a new resource.
 
+### Test Update Customer
+
+_Use Spring MockMVC and Mockito to test Update endpoint for Customer_
+
+#### Instruções
+
+* Use Spring MockMVC and Mockito to test Update endpoint for Customer
+* Write test to test Update of customer
+* Verify HTTP 204 is returned
+* Verify Mockito Mock is called
+
+#### Pergunta
+
+* What HTTP Method is used to update an existing resource?
+    * **Minha Resposta:** The HTTP PUT method is used to update an existing resource.
+    * **Resposta do Instrutor:** HTTP PUT is used to update existing resources.
+
+### Test Delete Customer
+
+#### Instruções
+
+#### Pergunta
+
+* ?
+    * **Minha Resposta:**
+    * **Resposta do Instrutor:**
+
+### Test patch Customer
+
+#### Instruções
+
+#### Pergunta
+
+* ?
+    * **Minha Resposta:**
+    * **Resposta do Instrutor:**
+
 ---
 
 ## Exception Handling with Spring MVC
