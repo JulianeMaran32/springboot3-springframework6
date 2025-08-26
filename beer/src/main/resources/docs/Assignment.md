@@ -15,7 +15,7 @@ _Implement GET customer operations_
 
 ### Pergunta
 
-* **If you're using Project Lombok, how do you override a getter implementation?**
+* If you're using Project Lombok, how do you override a getter implementation?
     * **Minha Resposta:** If you create a getter method without using Lombok, when running the application the method
       will not be generated again by Lombok.
     * **Resposta do Instrutor:** Simply implement the desired getter method. Lombok will not generate the method if one
@@ -35,7 +35,7 @@ _Handle HTTP Post for Create new Customer_
 
 ### Pergunta
 
-* **What does the HTTP status 201 mean?**
+* What does the HTTP status 201 mean?
     * **Minha Resposta:** HTTP Status 201 means creating a resource.
     * **Resposta do Instrutor:** HTTP 201 means created. The server response to indicate the resource was created
       successfully.
@@ -50,7 +50,7 @@ _Implement HTTP Put endpoint to update existing customer_
 
 ### Pergunta
 
-* **What is special about the `@PutMapping` annotation?**
+* What is special about the `@PutMapping` annotation?
     * **Minha Resposta:** The `@PutMapping` annotation in Spring is used to map HTTP PUT requests to specific methods in
       a controller, indicating that this action should be used to update an existing resource.
     * **Resposta do Instrutor:** The `@PutMapping` annotation will limit the method to responding to HTTP PUT requests
@@ -60,11 +60,15 @@ _Implement HTTP Put endpoint to update existing customer_
 
 ### Instruções
 
+* Implement HTTP Delete endpoint to delete existing customer
+
 ### Pergunta
 
-* **Xxxxxxxxxxxxxxxxxx**
-    * **Minha Resposta:**
-    * **Resposta do Instrutor:**
+* Should you return a content body in a delete operation?
+    * **Minha Resposta:** In a DELETE operation, it is best not to return a content body, especially if the delete was
+      successful. The HTTP status code 204 No Content is the safest way to indicate that the request was successful and
+      that there is no content to return in the response.
+    * **Resposta do Instrutor:** No, delete operations should just return a HTTP 204 No Content status.
 
 ## HTTP PATCH with Spring MVC
 
@@ -72,6 +76,6 @@ _Implement HTTP Put endpoint to update existing customer_
 
 ### Pergunta
 
-* **Xxxxxxxxxxxxxxxxxx**
+* ?
     * **Minha Resposta:**
     * **Resposta do Instrutor:**

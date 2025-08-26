@@ -78,8 +78,6 @@ curl --location 'http://localhost:8080/api/v1/beer'
 ]
 ```
 
----
-
 ### GET /beer/{beerId}
 
 **cURL - Request**
@@ -103,8 +101,6 @@ curl --location 'http://localhost:8080/api/v1/beer/f7995058-436c-483e-8e91-61df2
   "updateDate": "2025-08-24T22:01:10.2563538"
 }
 ```
-
----
 
 ### POST /beer
 
@@ -154,8 +150,6 @@ Keep-Alive: timeout=60
 Connection: keep-alive
 ```
 
----
-
 ### PUT /beer/{beerId}
 
 **cURL - Request**
@@ -176,9 +170,19 @@ curl --location --request PUT 'http://localhost:8080/api/v1/beer/dcbf93f1-90a6-4
 
 - Status HTTP: 204 No Content
 
----
-
 ### DELETE /beer/{beerId}
+
+**cURL - Request**
+
+```
+curl --location --request DELETE 'http://localhost:8080/api/v1/beer/08a5e479-5ee5-476c-8c38-44dea65b710a'
+```
+
+**Response**
+
+- Status HTTP: 204 No Content
+
+### PATCH /beer
 
 **cURL - Request**
 
@@ -188,9 +192,9 @@ curl --location --request PUT 'http://localhost:8080/api/v1/beer/dcbf93f1-90a6-4
 
 **Response**
 
-```json
+- Status HTTP: 204 No Content
 
-```
+---
 
 ## Order Service
 
@@ -205,7 +209,29 @@ curl --location 'http://localhost:8080/api/v1/customer'
 **Response**
 
 ```json
-
+[
+  {
+    "id": "dd49fd83-f2cc-448c-9d3a-3f621eb5c354",
+    "version": 1,
+    "name": "Customer 3",
+    "createdDate": "2025-08-25T21:23:32.017548",
+    "updateDate": "2025-08-25T21:23:32.017548"
+  },
+  {
+    "id": "f54d9ee9-70e6-4629-a394-6712f51ceb99",
+    "version": 1,
+    "name": "Customer 1",
+    "createdDate": "2025-08-25T21:23:32.017548",
+    "updateDate": "2025-08-25T21:23:32.017548"
+  },
+  {
+    "id": "6052e994-efeb-4858-ba39-8b11e15a1daf",
+    "version": 1,
+    "name": "Customer 2",
+    "createdDate": "2025-08-25T21:23:32.017548",
+    "updateDate": "2025-08-25T21:23:32.017548"
+  }
+]
 ```
 
 ---
@@ -215,13 +241,19 @@ curl --location 'http://localhost:8080/api/v1/customer'
 **cURL - Request**
 
 ```
-curl --location --globoff 'http://localhost:8080/api/v1/customer/{customerId}'
+curl --location 'http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99'
 ```
 
 **Response**
 
 ```json
-
+{
+  "id": "f54d9ee9-70e6-4629-a394-6712f51ceb99",
+  "version": 1,
+  "name": "Customer 1",
+  "createdDate": "2025-08-25T21:23:32.017548",
+  "updateDate": "2025-08-25T21:23:32.017548"
+}
 ```
 
 ---
@@ -291,11 +323,21 @@ curl --location --request PUT 'http://localhost:8080/api/v1/customer/f54d9ee9-70
 **cURL - Request**
 
 ```
+curl --location --request DELETE 'http://localhost:8080/api/v1/customer/2fc46a08-a6b2-404b-a3fe-b4d4e3289015'
+```
+
+**Response**
+
+- Status HTTP: 204 No Content
+
+### PATCH /customer
+
+**cURL - Request**
+
+```
 
 ```
 
 **Response**
 
-```json
-
-```
+- Status HTTP: 204 No Content

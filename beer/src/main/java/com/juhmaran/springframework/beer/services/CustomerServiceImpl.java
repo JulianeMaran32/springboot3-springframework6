@@ -11,7 +11,7 @@ import java.util.*;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-  private Map<UUID, Customer> customerMap;
+  private final Map<UUID, Customer> customerMap;
 
   public CustomerServiceImpl() {
     var customer1 = Customer.builder()
@@ -21,7 +21,6 @@ public class CustomerServiceImpl implements CustomerService {
       .createdDate(LocalDateTime.now())
       .updateDate(LocalDateTime.now())
       .build();
-
     var customer2 = Customer.builder()
       .id(UUID.randomUUID())
       .name("Customer 2")
@@ -29,7 +28,6 @@ public class CustomerServiceImpl implements CustomerService {
       .createdDate(LocalDateTime.now())
       .updateDate(LocalDateTime.now())
       .build();
-
     var customer3 = Customer.builder()
       .id(UUID.randomUUID())
       .name("Customer 3")
@@ -37,7 +35,6 @@ public class CustomerServiceImpl implements CustomerService {
       .createdDate(LocalDateTime.now())
       .updateDate(LocalDateTime.now())
       .build();
-
     customerMap = new HashMap<>();
     customerMap.put(customer1.getId(), customer1);
     customerMap.put(customer2.getId(), customer2);
@@ -45,8 +42,18 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public Customer saveNewCustomer(Customer customer) {
+  public void deleteCustomerById(UUID customerId) {
+    customerMap.remove(customerId);
+  }
 
+  @Override
+  public void updateCustomerById(UUID customerId, Customer customer) {
+    Customer existing = customerMap.get(customerId);
+    existing.setName(customer.getName());
+  }
+
+  @Override
+  public Customer saveNewCustomer(Customer customer) {
     var savedCustomer = Customer.builder()
       .id(UUID.randomUUID())
       .version(1)
@@ -54,16 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
       .createdDate(LocalDateTime.now())
       .name(customer.getName())
       .build();
-
     customerMap.put(savedCustomer.getId(), savedCustomer);
-
     return savedCustomer;
-  }
-
-  @Override
-  public void updateCustomerById(UUID customerId, Customer customer) {
-    Customer existing = customerMap.get(customerId);
-    existing.setName(customer.getName());
   }
 
   @Override
