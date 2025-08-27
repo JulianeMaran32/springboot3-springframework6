@@ -1,6 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.model.Beer;
 import com.juhmaran.springframework.beer.services.BeerService;
 import com.juhmaran.springframework.beer.services.BeerServiceImpl;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -130,7 +132,7 @@ class BeerControllerTest {
   void getBeerById() throws Exception {
     Beer testBeer = beerServiceImpl.listBeers().getFirst();
 
-    given(beerService.getBeerById(testBeer.getId())).willReturn(testBeer);
+    given(beerService.getBeerById(testBeer.getId())).willReturn(Optional.of(testBeer));
 
     mockMvc.perform(get(BEER_PATH + "/" + testBeer.getId())
         .accept(MediaType.APPLICATION_JSON))
@@ -138,6 +140,15 @@ class BeerControllerTest {
       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
       .andExpect(jsonPath("$.id", is(testBeer.getId().toString())))
       .andExpect(jsonPath("$.beerName", is(testBeer.getBeerName())));
+  }
+
+  @Test
+  void getBeerByIdNotFound() throws Exception {
+
+    given(beerService.getBeerById(any(UUID.class))).willThrow(NotFoundException.class);
+
+    mockMvc.perform(get("/api/v1/beer/{beerId}", UUID.randomUUID()))
+      .andExpect(status().isNotFound());
   }
 
 }

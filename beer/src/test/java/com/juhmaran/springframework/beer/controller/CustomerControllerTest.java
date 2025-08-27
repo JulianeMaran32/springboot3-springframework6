@@ -1,6 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.model.Customer;
 import com.juhmaran.springframework.beer.services.CustomerService;
 import com.juhmaran.springframework.beer.services.CustomerServiceImpl;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -127,10 +129,19 @@ class CustomerControllerTest {
   }
 
   @Test
+  void getCustomerByIdNotFound() throws Exception {
+
+    given(customerService.getCustomerById(any(UUID.class))).willThrow(NotFoundException.class);
+
+    mockMvc.perform(get("/api/v1/customer/{customerId}", UUID.randomUUID()))
+      .andExpect(status().isNotFound());
+  }
+
+  @Test
   void getCustomerById() throws Exception {
     Customer customer = customerServiceImpl.getAllCustomers().getFirst();
 
-    given(customerService.getCustomerById(customer.getId())).willReturn(customer);
+    given(customerService.getCustomerById(customer.getId())).willReturn(Optional.of(customer));
 
     mockMvc.perform(get(CUSTOMER_PATH + "/" + customer.getId())
         .accept(MediaType.APPLICATION_JSON))

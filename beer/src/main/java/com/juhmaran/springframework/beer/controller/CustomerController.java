@@ -1,5 +1,6 @@
 package com.juhmaran.springframework.beer.controller;
 
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.model.Customer;
 import com.juhmaran.springframework.beer.services.CustomerService;
 import lombok.AllArgsConstructor;
@@ -55,7 +56,8 @@ public class CustomerController {
 
   @GetMapping("/{customerId}")
   public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") UUID id) {
-    return new ResponseEntity<>(customerService.getCustomerById(id), HttpStatus.OK);
+    return new ResponseEntity<>(customerService.getCustomerById(id)
+      .orElseThrow(NotFoundException::new), HttpStatus.OK);
   }
 
 }
