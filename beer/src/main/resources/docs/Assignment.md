@@ -4,16 +4,16 @@
 
 ### HTTP GET with Spring MVC
 
-_Implement `GET` customer operations_
+_Implement `GET` customerDTO operations_
 
 #### Instruções
 
-* Assignment is to implement `GET` customer operations.
+* Assignment is to implement `GET` customerDTO operations.
 * Customer simple POJO of `customerName`, `id`, `version`, `createdDate`, `lastModifiedDate`.
 * Use Project Lombok.
 * Create Service, use Map to store 2-3 customers.
 * Create Controller Endpoint to **list all customers**.
-* Create Controller Endpoint to **get customer by id**.
+* Create Controller Endpoint to **get customerDTO by id**.
 
 #### Pergunta
 
@@ -33,7 +33,7 @@ _Handle HTTP POST` for Create new Customer_
 * Create Controller method to handle post
 * Update Request Mapping
 * Save to in-memory hash map
-* Return 201 status with location of created customer object
+* Return 201 status with location of created customerDTO object
 
 #### Pergunta
 
@@ -48,7 +48,7 @@ _Implement HTTP `PUT` endpoint to update existing customer_
 
 #### Instruções
 
-* Implement HTTP `PUT` endpoint to update existing customer
+* Implement HTTP `PUT` endpoint to update existing customerDTO
 
 #### Pergunta
 
@@ -62,7 +62,7 @@ _Implement HTTP `PUT` endpoint to update existing customer_
 
 #### Instruções
 
-* Implement HTTP `DELETE` endpoint to delete existing customer
+* Implement HTTP `DELETE` endpoint to delete existing customerDTO
 
 #### Pergunta
 
@@ -74,11 +74,11 @@ _Implement HTTP `PUT` endpoint to update existing customer_
 
 ### HTTP `PATCH` with Spring MVC
 
-_Implement `PATCH` endpoint for customer._
+_Implement `PATCH` endpoint for customerDTO._
 
 #### Instruções
 
-* Implement `PATCH` endpoint for customer.
+* Implement `PATCH` endpoint for customerDTO.
 * Create Service method for patch operation
 
 #### Pergunta
@@ -98,10 +98,10 @@ _Implement `PATCH` endpoint for customer._
 
 #### Instruções
 
-* Use Spring MockMVC and Mockito to test GET operations for customer
-* Write test to test get customer list
+* Use Spring MockMVC and Mockito to test GET operations for customerDTO
+* Write test to test get customerDTO list
     * verify number of elements in list
-* Write test to get customer by id
+* Write test to get customerDTO by id
     * Verify properties in JSON response from Spring Mock MVC
 
 #### Pergunta
@@ -121,7 +121,7 @@ _Use Spring MockMVC and Mockito to test Create endpoint for Customer_
 #### Instruções
 
 * Use Spring MockMVC and Mockito to test Create endpoint for Customer
-* Write test to test creation of customer
+* Write test to test creation of customerDTO
 * Update Test to re-create CustomerServiceImpl before each test
 * Verify HTTP 201 is returned
 * Verify Location Header is returned
@@ -139,7 +139,7 @@ _Use Spring MockMVC and Mockito to test Update endpoint for Customer_
 #### Instruções
 
 * Use Spring MockMVC and Mockito to test Update endpoint for Customer
-* Write test to test Update of customer
+* Write test to test Update of customerDTO
 * Verify HTTP 204 is returned
 * Verify Mockito Mock is called
 

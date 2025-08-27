@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.juhmaran.springframework</groupId>
-    <artifactId>beer</artifactId>
+    <artifactId>beerDTO</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>beer</name>
+    <name>beerDTO</name>
     <description>Beer</description>
     <url/>
     <licenses>

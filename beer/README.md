@@ -1,6 +1,6 @@
 # Beer
 
-- URL: [SFG Beer Works](https://sfg-beer-works.github.io/brewery-api/#tag/Beer-Service/operation/listBeers)
+- URL: [SFG Beer Works](https://sfg-beerDTO-works.github.io/brewery-api/#tag/Beer-Service/operation/listBeers)
 
 ---
 
@@ -30,12 +30,12 @@
 
 ## Beer Service
 
-### GET /beer
+### GET /beerDTO
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/beer'
+curl --location 'http://localhost:8080/api/v1/beerDTO'
 ```
 
 **Response**
@@ -78,12 +78,12 @@ curl --location 'http://localhost:8080/api/v1/beer'
 ]
 ```
 
-### GET /beer/{beerId}
+### GET /beerDTO/{beerId}
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/beer/f7995058-436c-483e-8e91-61df2515a98f'
+curl --location 'http://localhost:8080/api/v1/beerDTO/f7995058-436c-483e-8e91-61df2515a98f'
 ```
 
 **Response**
@@ -102,12 +102,12 @@ curl --location 'http://localhost:8080/api/v1/beer/f7995058-436c-483e-8e91-61df2
 }
 ```
 
-### POST /beer
+### POST /beerDTO
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/beer' \
+curl --location 'http://localhost:8080/api/v1/beerDTO' \
 --header 'Content-Type: application/json' \
 --data '{
     "beerName": "Crank",
@@ -123,7 +123,7 @@ curl --location 'http://localhost:8080/api/v1/beer' \
 Status HTTP: 201 Created
 
 ```bash
-POST /api/v1/beer HTTP/1.1
+POST /api/v1/beerDTO HTTP/1.1
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.45.0
 Accept: */*
@@ -143,19 +143,19 @@ Content-Length: 132
 }
  
 HTTP/1.1 201 Created
-Location: /api/v1/beer/c82acc2b-1d32-4db6-ab13-2e1f62c7f029
+Location: /api/v1/beerDTO/c82acc2b-1d32-4db6-ab13-2e1f62c7f029
 Content-Length: 0
 Date: Mon, 25 Aug 2025 01:08:05 GMT
 Keep-Alive: timeout=60
 Connection: keep-alive
 ```
 
-### PUT /beer/{beerId}
+### PUT /beerDTO/{beerId}
 
 **cURL - Request**
 
 ```
-curl --location --request PUT 'http://localhost:8080/api/v1/beer/dcbf93f1-90a6-448a-bd81-005cce0e1705' \
+curl --location --request PUT 'http://localhost:8080/api/v1/beerDTO/dcbf93f1-90a6-448a-bd81-005cce0e1705' \
 --header 'Content-Type: application/json' \
 --data '{
     "beerName": "Crank",
@@ -170,26 +170,26 @@ curl --location --request PUT 'http://localhost:8080/api/v1/beer/dcbf93f1-90a6-4
 
 - Status HTTP: 204 No Content
 
-### DELETE /beer/{beerId}
+### DELETE /beerDTO/{beerId}
 
 **cURL - Request**
 
 ```
-curl --location --request DELETE 'http://localhost:8080/api/v1/beer/08a5e479-5ee5-476c-8c38-44dea65b710a'
+curl --location --request DELETE 'http://localhost:8080/api/v1/beerDTO/08a5e479-5ee5-476c-8c38-44dea65b710a'
 ```
 
 **Response**
 
 - Status HTTP: 204 No Content
 
-### PATCH /beer/{beerId}
+### PATCH /beerDTO/{beerId}
 
 Atualiza apenas um campo da entidade Beer.
 
 **cURL - Request**
 
 ```
-curl --location --request PATCH 'http://localhost:8080/api/v1/beer/7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782' \
+curl --location --request PATCH 'http://localhost:8080/api/v1/beerDTO/7bf0d4a7-323f-4bd8-aa8e-7f8ac9926782' \
 --header 'Content-Type: application/json' \
 --data '{
     "quantityOnHand": 105
@@ -204,12 +204,12 @@ curl --location --request PATCH 'http://localhost:8080/api/v1/beer/7bf0d4a7-323f
 
 ## Order Service
 
-### GET /customer
+### GET /customerDTO
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/customer'
+curl --location 'http://localhost:8080/api/v1/customerDTO'
 ```
 
 **Response**
@@ -242,12 +242,12 @@ curl --location 'http://localhost:8080/api/v1/customer'
 
 ---
 
-### GET /customer/{customerId}
+### GET /customerDTO/{customerId}
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99'
+curl --location 'http://localhost:8080/api/v1/customerDTO/f54d9ee9-70e6-4629-a394-6712f51ceb99'
 ```
 
 **Response**
@@ -264,12 +264,12 @@ curl --location 'http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6
 
 ---
 
-### POST /customer
+### POST /customerDTO
 
 **cURL - Request**
 
 ```
-curl --location 'http://localhost:8080/api/v1/customer' \
+curl --location 'http://localhost:8080/api/v1/customerDTO' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "José da Silva"
@@ -281,7 +281,7 @@ curl --location 'http://localhost:8080/api/v1/customer' \
 - Status HTTP: 201 Created
 
 ```bash
-POST /api/v1/customer HTTP/1.1
+POST /api/v1/customerDTO HTTP/1.1
 Content-Type: application/json
 User-Agent: PostmanRuntime/7.45.0
 Accept: */*
@@ -297,7 +297,7 @@ Content-Length: 34
 }
  
 HTTP/1.1 201 Created
-Location: /api/v1/customer/a2ebf9f8-4c50-49ff-8071-2c75e28f5023
+Location: /api/v1/customerDTO/a2ebf9f8-4c50-49ff-8071-2c75e28f5023
 Content-Length: 0
 Date: Mon, 25 Aug 2025 11:02:43 GMT
 Keep-Alive: timeout=60
@@ -306,12 +306,12 @@ Connection: keep-alive
 
 ---
 
-### PUT /customer/{customerId}
+### PUT /customerDTO/{customerId}
 
 **cURL - Request**
 
 ```
-curl --location --request PUT 'http://localhost:8080/api/v1/customer/f54d9ee9-70e6-4629-a394-6712f51ceb99' \
+curl --location --request PUT 'http://localhost:8080/api/v1/customerDTO/f54d9ee9-70e6-4629-a394-6712f51ceb99' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "José da Silva"
@@ -324,24 +324,24 @@ curl --location --request PUT 'http://localhost:8080/api/v1/customer/f54d9ee9-70
 
 ---
 
-### DELETE /customer/{customerId}
+### DELETE /customerDTO/{customerId}
 
 **cURL - Request**
 
 ```
-curl --location --request DELETE 'http://localhost:8080/api/v1/customer/2fc46a08-a6b2-404b-a3fe-b4d4e3289015'
+curl --location --request DELETE 'http://localhost:8080/api/v1/customerDTO/2fc46a08-a6b2-404b-a3fe-b4d4e3289015'
 ```
 
 **Response**
 
 - Status HTTP: 204 No Content
 
-### PATCH /customer
+### PATCH /customerDTO
 
 **cURL - Request**
 
 ```
-curl --location --request PATCH 'http://localhost:8080/api/v1/customer/6baa2b63-6ec4-4833-b261-09b105de3c53' \
+curl --location --request PATCH 'http://localhost:8080/api/v1/customerDTO/6baa2b63-6ec4-4833-b261-09b105de3c53' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "Maria do Carmo"

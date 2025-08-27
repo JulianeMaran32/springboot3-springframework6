@@ -1,6 +1,6 @@
 package com.juhmaran.springframework.beer.services;
 
-import com.juhmaran.springframework.beer.model.Customer;
+import com.juhmaran.springframework.beer.model.CustomerDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,16 +8,16 @@ import java.util.UUID;
 
 public interface CustomerService {
 
-  Optional<Customer> getCustomerById(UUID uuid);
+  Optional<CustomerDTO> getCustomerById(UUID uuid);
 
-  List<Customer> getAllCustomers();
+  List<CustomerDTO> getAllCustomers();
 
-  Customer saveNewCustomer(Customer customer);
+  CustomerDTO saveNewCustomer(CustomerDTO customerDTO);
 
-  void updateCustomerById(UUID customerId, Customer customer);
+  void updateCustomerById(UUID customerId, CustomerDTO customerDTO);
 
   void deleteCustomerById(UUID customerId);
 
-  void patchCustomerById(UUID customerId, Customer customer);
+  void patchCustomerById(UUID customerId, CustomerDTO customerDTO);
 
 }

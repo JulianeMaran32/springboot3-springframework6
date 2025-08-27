@@ -28,13 +28,13 @@
         - Like: `@RequestMapping(value = "/api/{pathParam}")`.
         - Like: `public String myGetMethod(@PathVariable("pathParam") String pathParam)`.
 
-4. Given the url path of `/api/customer` how to you map a `DELETE` request to a specific controller method?
-    - A) Use `@RequestMapping(value = "/api/customer", method = RequestMethod.DELETE)` on the desired method. (
+4. Given the url path of `/api/customerDTO` how to you map a `DELETE` request to a specific controller method?
+    - A) Use `@RequestMapping(value = "/api/customerDTO", method = RequestMethod.DELETE)` on the desired method. (
       incorreto).
     - B) Can be done by convention, by starting the method name with 'delete'. Spring will use reflection to determine
       the proper method to use. (incorreto)
-    - C) Use `@RequestMapping(value = "/api/customer", method = RequestMethod.DELETE)` on the desired method. OR Use
-      `@DeleteMapping("/api/customer")`. (correto)
+    - C) Use `@RequestMapping(value = "/api/customerDTO", method = RequestMethod.DELETE)` on the desired method. OR Use
+      `@DeleteMapping("/api/customerDTO")`. (correto)
 
 5. What does the `@Slf4j` annotation do?
     - A) Makes the class serializable. (incorreto)

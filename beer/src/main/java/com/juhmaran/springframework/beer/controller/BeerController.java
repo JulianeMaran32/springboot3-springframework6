@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.juhmaran.springframework.beer.exception.NotFoundException;
-import com.juhmaran.springframework.beer.model.Beer;
+import com.juhmaran.springframework.beer.model.BeerDTO;
 import com.juhmaran.springframework.beer.services.BeerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,8 +23,8 @@ public class BeerController {
 
   @PatchMapping("/{beerId}")
   public ResponseEntity<Void> updateBeerPatchById(@PathVariable("beerId") UUID beerId,
-                                                  @RequestBody Beer beer) {
-    beerService.patchBeerById(beerId, beer);
+                                                  @RequestBody BeerDTO beerDTO) {
+    beerService.patchBeerById(beerId, beerDTO);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
@@ -36,26 +36,26 @@ public class BeerController {
 
   @PutMapping("/{beerId}")
   public ResponseEntity<Void> updateById(@PathVariable("beerId") UUID beerId,
-                                         @RequestBody Beer beer) {
-    beerService.updateBeerById(beerId, beer);
+                                         @RequestBody BeerDTO beerDTO) {
+    beerService.updateBeerById(beerId, beerDTO);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
   @PostMapping
-  public ResponseEntity<Void> handlePost(@RequestBody Beer beer) {
-    Beer savedBeer = beerService.saveNewBeer(beer);
+  public ResponseEntity<Void> handlePost(@RequestBody BeerDTO beerDTO) {
+    BeerDTO savedBeerDTO = beerService.saveNewBeer(beerDTO);
     var headers = new HttpHeaders();
-    headers.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
+    headers.add("Location", "/api/v1/beer/" + savedBeerDTO.getId().toString());
     return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
   @GetMapping
-  public ResponseEntity<List<Beer>> listBeers() {
+  public ResponseEntity<List<BeerDTO>> listBeers() {
     return new ResponseEntity<>(beerService.listBeers(), HttpStatus.OK);
   }
 
   @GetMapping("/{beerId}")
-  public ResponseEntity<Beer> getBeerById(@PathVariable("beerId") UUID beerId) {
+  public ResponseEntity<BeerDTO> getBeerById(@PathVariable("beerId") UUID beerId) {
     log.debug("Get Beer by Id - in controller");
     return new ResponseEntity<>(beerService.getBeerById(beerId)
       .orElseThrow(NotFoundException::new), HttpStatus.OK);
