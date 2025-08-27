@@ -20,41 +20,42 @@ public class BeerController {
 
   private final BeerService beerService;
 
-  @PatchMapping("{beerId}")
-  public ResponseEntity updateBeerPatchById(@PathVariable("beerId") UUID beerId, @RequestBody Beer beer) {
+  @PatchMapping("/{beerId}")
+  public ResponseEntity<Void> updateBeerPatchById(@PathVariable("beerId") UUID beerId,
+                                                  @RequestBody Beer beer) {
     beerService.patchBeerById(beerId, beer);
-    return new ResponseEntity(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping("{beerId}")
-  public ResponseEntity deleteById(@PathVariable("beerId") UUID beerId) {
+  @DeleteMapping("/{beerId}")
+  public ResponseEntity<Void> deleteById(@PathVariable("beerId") UUID beerId) {
     beerService.deleteById(beerId);
-    return new ResponseEntity(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
-  @PutMapping("{beerId}")
-  public ResponseEntity updateById(@PathVariable("beerId") UUID beerId, @RequestBody Beer beer) {
+  @PutMapping("/{beerId}")
+  public ResponseEntity<Void> updateById(@PathVariable("beerId") UUID beerId, @RequestBody Beer beer) {
     beerService.updateBeerById(beerId, beer);
-    return new ResponseEntity(HttpStatus.NO_CONTENT);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
   @PostMapping
-  public ResponseEntity handlePost(@RequestBody Beer beer) {
+  public ResponseEntity<Void> handlePost(@RequestBody Beer beer) {
     Beer savedBeer = beerService.saveNewBeer(beer);
     HttpHeaders headers = new HttpHeaders();
     headers.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
-    return new ResponseEntity(headers, HttpStatus.CREATED);
+    return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
 
   @GetMapping
-  public List<Beer> listBeers() {
-    return beerService.listBeers();
+  public ResponseEntity<List<Beer>> listBeers() {
+    return new ResponseEntity<>(beerService.listBeers(), HttpStatus.OK);
   }
 
-  @GetMapping("{beerId}")
-  public Beer getBeerById(@PathVariable("beerId") UUID beerId) {
+  @GetMapping("/{beerId}")
+  public ResponseEntity<Beer> getBeerById(@PathVariable("beerId") UUID beerId) {
     log.debug("Get Beer by Id - in controller");
-    return beerService.getBeerById(beerId);
+    return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
   }
 
 }
