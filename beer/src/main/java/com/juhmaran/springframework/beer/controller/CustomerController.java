@@ -43,7 +43,7 @@ public class CustomerController {
   @PostMapping
   public ResponseEntity<Void> handlePost(@RequestBody Customer customer) {
     Customer savedCustomer = customerService.saveNewCustomer(customer);
-    HttpHeaders headers = new HttpHeaders();
+    var headers = new HttpHeaders();
     headers.add("Location", "/api/v1/customer/" + savedCustomer.getId().toString());
     return new ResponseEntity<>(headers, HttpStatus.CREATED);
   }
