@@ -2,7 +2,7 @@ package com.juhmaran.springframework.beer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.juhmaran.springframework.beer.exception.NotFoundException;
-import com.juhmaran.springframework.beer.model.BeerDTO;
+import com.juhmaran.springframework.beer.dto.BeerDTO;
 import com.juhmaran.springframework.beer.services.BeerService;
 import com.juhmaran.springframework.beer.services.BeerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;

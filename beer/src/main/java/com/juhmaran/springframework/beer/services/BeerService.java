@@ -1,6 +1,6 @@
 package com.juhmaran.springframework.beer.services;
 
-import com.juhmaran.springframework.beer.model.BeerDTO;
+import com.juhmaran.springframework.beer.dto.BeerDTO;
 
 import java.util.List;
 import java.util.Optional;

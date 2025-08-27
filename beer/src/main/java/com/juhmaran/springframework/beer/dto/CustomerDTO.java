@@ -1,4 +1,4 @@
-package com.juhmaran.springframework.beer.model;
+package com.juhmaran.springframework.beer.dto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.juhmaran.springframework.beer.services;
 
-import com.juhmaran.springframework.beer.model.CustomerDTO;
+import com.juhmaran.springframework.beer.dto.CustomerDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

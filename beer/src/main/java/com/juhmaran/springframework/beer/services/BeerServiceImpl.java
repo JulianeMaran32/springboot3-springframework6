@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.beer.services;
 
-import com.juhmaran.springframework.beer.model.BeerDTO;
-import com.juhmaran.springframework.beer.model.BeerStyle;
+import com.juhmaran.springframework.beer.dto.BeerDTO;
+import com.juhmaran.springframework.beer.dto.BeerStyle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

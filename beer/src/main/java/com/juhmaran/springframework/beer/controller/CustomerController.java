@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.juhmaran.springframework.beer.exception.NotFoundException;
-import com.juhmaran.springframework.beer.model.CustomerDTO;
+import com.juhmaran.springframework.beer.dto.CustomerDTO;
 import com.juhmaran.springframework.beer.services.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
