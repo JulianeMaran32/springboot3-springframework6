@@ -214,7 +214,7 @@ _Use Spring MockMVC and Mockito to test Patch endpoint for Customer_
       gerenciadas automaticamente pelo provedor de persistência (como o Hibernate com Spring Data JPA). O ID é
       frequentemente gerado pelo banco de dados ou por uma estratégia específica (como UUIDs), e a versão é usada para
       controle de concorrência otimista.
-    * **Resposta do Instrutor:** These properties are managed by Hibernate and should not be set externally.
+      * **Resposta do Instrutor:** These properties are managed by Hibernate and should not be set externally.
 
 ---
 
