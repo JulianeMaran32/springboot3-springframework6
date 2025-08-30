@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
-import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.dto.BeerDTO;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.services.BeerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,43 +22,40 @@ public class BeerController {
   private final BeerService beerService;
 
   @PatchMapping("/{beerId}")
-  public ResponseEntity<Void> updateBeerPatchById(@PathVariable("beerId") UUID beerId,
-                                                  @RequestBody BeerDTO beerDTO) {
-    beerService.patchBeerById(beerId, beerDTO);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  public ResponseEntity updateBeerPatchById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDTO beer) {
+    beerService.patchBeerById(beerId, beer);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @DeleteMapping("/{beerId}")
-  public ResponseEntity<Void> deleteById(@PathVariable("beerId") UUID beerId) {
+  public ResponseEntity deleteById(@PathVariable("beerId") UUID beerId) {
     beerService.deleteById(beerId);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @PutMapping("/{beerId}")
-  public ResponseEntity<Void> updateById(@PathVariable("beerId") UUID beerId,
-                                         @RequestBody BeerDTO beerDTO) {
-    beerService.updateBeerById(beerId, beerDTO);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  public ResponseEntity updateById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDTO beer) {
+    beerService.updateBeerById(beerId, beer);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @PostMapping
-  public ResponseEntity<Void> handlePost(@RequestBody BeerDTO beerDTO) {
-    BeerDTO savedBeerDTO = beerService.saveNewBeer(beerDTO);
-    var headers = new HttpHeaders();
-    headers.add("Location", "/api/v1/beer/" + savedBeerDTO.getId().toString());
-    return new ResponseEntity<>(headers, HttpStatus.CREATED);
+  public ResponseEntity handlePost(@RequestBody BeerDTO beer) {
+    BeerDTO savedBeer = beerService.saveNewBeer(beer);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
+    return new ResponseEntity(headers, HttpStatus.CREATED);
   }
 
   @GetMapping
-  public ResponseEntity<List<BeerDTO>> listBeers() {
-    return new ResponseEntity<>(beerService.listBeers(), HttpStatus.OK);
+  public List<BeerDTO> listBeers() {
+    return beerService.listBeers();
   }
 
   @GetMapping("/{beerId}")
-  public ResponseEntity<BeerDTO> getBeerById(@PathVariable("beerId") UUID beerId) {
+  public BeerDTO getBeerById(@PathVariable("beerId") UUID beerId) {
     log.debug("Get Beer by Id - in controller");
-    return new ResponseEntity<>(beerService.getBeerById(beerId)
-      .orElseThrow(NotFoundException::new), HttpStatus.OK);
+    return beerService.getBeerById(beerId).orElseThrow(NotFoundException::new);
   }
 
 }
