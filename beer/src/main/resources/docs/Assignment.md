@@ -214,7 +214,46 @@ _Use Spring MockMVC and Mockito to test Patch endpoint for Customer_
       gerenciadas automaticamente pelo provedor de persistência (como o Hibernate com Spring Data JPA). O ID é
       frequentemente gerado pelo banco de dados ou por uma estratégia específica (como UUIDs), e a versão é usada para
       controle de concorrência otimista.
-      * **Resposta do Instrutor:** These properties are managed by Hibernate and should not be set externally.
+        * **Resposta do Instrutor:** These properties are managed by Hibernate and should not be set externally.
+
+### Tarefa 16: Assignment - Implement Customer Get Operations
+
+_Implement Get operations in Customer JPA Service_
+
+#### Instruções
+
+* Test Driven Development - TDD - Write failing tests first, implement functionality
+* Create Integration Test for Customer Controller
+* Write Tests for List and Get By Id
+    * Test for empty list and Id Not found
+* Expect tests to fail, because JPA methods are not implemented
+* Implement Get operations in Customer JPA Service
+    * Verify passing tests
+
+#### Pergunta
+
+* Why use Java optional?
+    * **Minha Resposta (EN):** Java's `Optional` is used to **prevent `NullPointerExceptions`** and to make code more
+      **readable and robust** by explicitly indicating that a value might be absent. It forces the developer to actively
+      handle the possibility of a missing value, rather than relying on implicit null checks.
+    * **Minha Resposta (PT):** O `Optional` em Java é usado para **evitar `NullPointerExceptions`** e para tornar o
+      código mais **legível e robusto** ao indicar explicitamente que um valor pode estar ausente. Ele força o
+      desenvolvedor a lidar com a possibilidade de ausência de um valor, em vez de depender de verificações de nulo
+      implícitas.
+    * **Resposta do Instrutor:** Using Java Optional is generally considered a best practice since it indicates the
+      return value may be null and reduces null type checking. Using optional also helps reduce unintentional Null
+      pointer errors at runtime.
+
+### Tarefa 17: Assignment - Implement Customer JPA Operations
+
+#### Instruções
+
+#### Pergunta
+
+* W?
+    * **Minha Resposta (EN):**
+    * **Minha Resposta (PT):**
+    * **Resposta do Instrutor:**
 
 ---
 

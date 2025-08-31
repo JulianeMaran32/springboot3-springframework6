@@ -1,7 +1,7 @@
 package com.juhmaran.springframework.beer.controller;
 
-import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.dto.CustomerDTO;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.services.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,42 +22,41 @@ public class CustomerController {
   private final CustomerService customerService;
 
   @PatchMapping("{customerId}")
-  public ResponseEntity<Void> patchCustomerById(@PathVariable("customerId") UUID customerId,
-                                                @RequestBody CustomerDTO customerDTO) {
-    customerService.patchCustomerById(customerId, customerDTO);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  public ResponseEntity patchCustomerById(@PathVariable("customerId") UUID customerId,
+                                          @RequestBody CustomerDTO customer) {
+    customerService.patchCustomerById(customerId, customer);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @DeleteMapping("/{customerId}")
-  public ResponseEntity<Void> deleteCustomerById(@PathVariable("customerId") UUID customerId) {
+  public ResponseEntity deleteCustomerById(@PathVariable("customerId") UUID customerId) {
     customerService.deleteCustomerById(customerId);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @PutMapping("/{customerId}")
-  public ResponseEntity<Void> updateCustomerByID(@PathVariable("customerId") UUID customerId,
-                                                 @RequestBody CustomerDTO customerDTO) {
-    customerService.updateCustomerById(customerId, customerDTO);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  public ResponseEntity updateCustomerByID(@PathVariable("customerId") UUID customerId,
+                                           @RequestBody CustomerDTO customer) {
+    customerService.updateCustomerById(customerId, customer);
+    return new ResponseEntity(HttpStatus.NO_CONTENT);
   }
 
   @PostMapping
-  public ResponseEntity<Void> handlePost(@RequestBody CustomerDTO customerDTO) {
-    CustomerDTO savedCustomerDTO = customerService.saveNewCustomer(customerDTO);
-    var headers = new HttpHeaders();
-    headers.add("Location", "/api/v1/customer/" + savedCustomerDTO.getId().toString());
-    return new ResponseEntity<>(headers, HttpStatus.CREATED);
+  public ResponseEntity handlePost(@RequestBody CustomerDTO customer) {
+    CustomerDTO savedCustomer = customerService.saveNewCustomer(customer);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Location", "/api/v1/customer/" + savedCustomer.getId().toString());
+    return new ResponseEntity(headers, HttpStatus.CREATED);
   }
 
   @GetMapping
-  public ResponseEntity<List<CustomerDTO>> listAllCustomers() {
-    return new ResponseEntity<>(customerService.getAllCustomers(), HttpStatus.OK);
+  public List<CustomerDTO> listAllCustomers() {
+    return customerService.getAllCustomers();
   }
 
   @GetMapping("/{customerId}")
-  public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable("customerId") UUID id) {
-    return new ResponseEntity<>(customerService.getCustomerById(id)
-      .orElseThrow(NotFoundException::new), HttpStatus.OK);
+  public CustomerDTO getCustomerById(@PathVariable("customerId") UUID id) {
+    return customerService.getCustomerById(id).orElseThrow(NotFoundException::new);
   }
 
 }
