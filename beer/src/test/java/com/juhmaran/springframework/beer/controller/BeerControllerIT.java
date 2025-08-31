@@ -3,6 +3,7 @@ package com.juhmaran.springframework.beer.controller;
 import com.juhmaran.springframework.beer.dto.BeerDTO;
 import com.juhmaran.springframework.beer.entities.Beer;
 import com.juhmaran.springframework.beer.exception.NotFoundException;
+import com.juhmaran.springframework.beer.mappers.BeerMapper;
 import com.juhmaran.springframework.beer.repositories.BeerRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,27 @@ class BeerControllerIT {
 
   @Autowired
   BeerRepository beerRepository;
+
+  @Autowired
+  BeerMapper beerMapper;
+
+  @Test
+  void updateExistingBeer() {
+    Beer beer = beerRepository.findAll().get(0);
+    BeerDTO beerDTO = beerMapper.beerToBeerDto(beer);
+    beerDTO.setId(null);
+    beerDTO.setVersion(null);
+
+    final String beerName = "Updated Name";
+    beerDTO.setBeerName(beerName);
+
+    ResponseEntity responseEntity = beerController.updateById(beer.getId(), beerDTO);
+    assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(204));
+
+    Beer updateBeer = beerRepository.findById(beer.getId()).get();
+    assertThat(updateBeer.getBeerName()).isEqualTo(beerName);
+
+  }
 
   @Rollback
   @Transactional
