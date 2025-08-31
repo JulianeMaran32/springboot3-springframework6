@@ -1,6 +1,8 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.juhmaran.springframework.beer.dto.BeerDTO;
+import com.juhmaran.springframework.beer.entities.Beer;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.repositories.BeerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class BeerControllerIT {
@@ -20,6 +24,20 @@ class BeerControllerIT {
 
   @Autowired
   BeerRepository beerRepository;
+
+  @Test
+  void testBeerIdNotFound() {
+    assertThrows(NotFoundException.class, () -> {
+      beerController.getBeerById(UUID.randomUUID());
+    });
+  }
+
+  @Test
+  void testGetById() {
+    Beer beer = beerRepository.findAll().get(0);
+    BeerDTO dto = beerController.getBeerById(beer.getId());
+    assertThat(dto).isNotNull();
+  }
 
   @Test
   void testListBeers() {
