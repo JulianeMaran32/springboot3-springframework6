@@ -1,11 +1,12 @@
 package com.juhmaran.springframework.beer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.dto.BeerDTO;
+import com.juhmaran.springframework.beer.exception.NotFoundException;
 import com.juhmaran.springframework.beer.services.BeerService;
 import com.juhmaran.springframework.beer.services.BeerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -56,6 +57,7 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test patch beer")
   void testPatchBeer() throws Exception {
     BeerDTO beerDTO = beerServiceImpl.listBeers().getFirst();
 
@@ -76,6 +78,7 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test delete beer")
   void testDeleteBeer() throws Exception {
     BeerDTO beerDTO = beerServiceImpl.listBeers().getFirst();
 
@@ -89,19 +92,23 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test update beer")
   void testUpdateBeer() throws Exception {
-    BeerDTO beerDTO = beerServiceImpl.listBeers().getFirst();
+    BeerDTO beer = beerServiceImpl.listBeers().get(0);
 
-    mockMvc.perform(put(BEER_PATH + "/" + beerDTO.getId())
+    given(beerService.updateBeerById(any(), any())).willReturn(Optional.of(beer));
+
+    mockMvc.perform(put("/api/v1/beer/{beerId}", beer.getId())
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .content(objectMapper.writeValueAsString(beerDTO)))
+        .content(objectMapper.writeValueAsString(beer)))
       .andExpect(status().isNoContent());
 
     verify(beerService).updateBeerById(any(UUID.class), any(BeerDTO.class));
   }
 
   @Test
+  @DisplayName("Test create new beer")
   void testCreateNewBeer() throws Exception {
     BeerDTO beerDTO = beerServiceImpl.listBeers().getFirst();
     beerDTO.setVersion(null);
@@ -118,6 +125,7 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test list beers")
   void testListBeers() throws Exception {
     given(beerService.listBeers()).willReturn(beerServiceImpl.listBeers());
 
@@ -129,6 +137,7 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test get beer by id")
   void getBeerById() throws Exception {
     BeerDTO testBeerDTO = beerServiceImpl.listBeers().getFirst();
 
@@ -143,6 +152,7 @@ class BeerDTOControllerTest {
   }
 
   @Test
+  @DisplayName("Test get beer by id not found")
   void getBeerByIdNotFound() throws Exception {
 
     given(beerService.getBeerById(any(UUID.class))).willThrow(NotFoundException.class);
