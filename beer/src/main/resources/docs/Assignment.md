@@ -246,14 +246,24 @@ _Implement Get operations in Customer JPA Service_
 
 ### Tarefa 17: Assignment - Implement Customer JPA Operations
 
+_Complete Integration Tests and Implementations for Save New, Update by Id, Delete by Id, and Patch Customer_
+
 #### Instruções
+
+* Complete Integration Tests and Implementations for Save New, Update by Id, Delete by Id, and Patch Customer
+* Use **TDD**
+* Also, implement JPA **Patch** operation for Beer entity - **Very Similar** to Update by Id
+* Include not found logic to provide HTTP 404 when not found
+    * Refactor methods as needed
+* Assignment Review will be in a code review format, not live code
 
 #### Pergunta
 
-* W?
-    * **Minha Resposta (EN):**
-    * **Minha Resposta (PT):**
-    * **Resposta do Instrutor:**
+* If the requested resource of a delete operation is not found, what HTTP status should be returned?
+    * **Minha Resposta (EN):** A 404 Not Found HTTP status should be returned.
+    * **Minha Resposta (PT):** Um status HTTP 404 Not Found deve ser retornado.
+    * **Resposta do Instrutor:** A HTTP Status of 404 should be returned to indicate the requested resource was not
+      found.
 
 ---
 
