@@ -61,22 +61,27 @@ public class BeerServiceImpl implements BeerService {
   }
 
   @Override
-  public void patchBeerById(UUID beerId, BeerDTO beerDTO) {
+  public void patchBeerById(UUID beerId, BeerDTO beer) {
     BeerDTO existing = beerMap.get(beerId);
-    if (StringUtils.hasText(beerDTO.getBeerName())) {
-      existing.setBeerName(beerDTO.getBeerName());
+
+    if (StringUtils.hasText(beer.getBeerName())) {
+      existing.setBeerName(beer.getBeerName());
     }
-    if (beerDTO.getBeerStyle() != null) {
-      existing.setBeerStyle(beerDTO.getBeerStyle());
+
+    if (beer.getBeerStyle() != null) {
+      existing.setBeerStyle(beer.getBeerStyle());
     }
-    if (StringUtils.hasText(beerDTO.getUpc())) {
-      existing.setUpc(beerDTO.getUpc());
+
+    if (beer.getPrice() != null) {
+      existing.setPrice(beer.getPrice());
     }
-    if (beerDTO.getQuantityOnHand() != null) {
-      existing.setQuantityOnHand(beerDTO.getQuantityOnHand());
+
+    if (beer.getQuantityOnHand() != null) {
+      existing.setQuantityOnHand(beer.getQuantityOnHand());
     }
-    if (beerDTO.getPrice() != null) {
-      existing.setPrice(beerDTO.getPrice());
+
+    if (StringUtils.hasText(beer.getUpc())) {
+      existing.setUpc(beer.getUpc());
     }
   }
 
@@ -86,12 +91,12 @@ public class BeerServiceImpl implements BeerService {
   }
 
   @Override
-  public Optional<BeerDTO> updateBeerById(UUID beerId, BeerDTO beerDTO) {
+  public Optional<BeerDTO> updateBeerById(UUID beerId, BeerDTO beer) {
     BeerDTO existing = beerMap.get(beerId);
-    existing.setBeerName(beerDTO.getBeerName());
-    existing.setPrice(beerDTO.getPrice());
-    existing.setUpc(beerDTO.getUpc());
-    existing.setQuantityOnHand(beerDTO.getQuantityOnHand());
+    existing.setBeerName(beer.getBeerName());
+    existing.setPrice(beer.getPrice());
+    existing.setUpc(beer.getUpc());
+    existing.setQuantityOnHand(beer.getQuantityOnHand());
     return Optional.of(existing);
   }
 
@@ -102,24 +107,29 @@ public class BeerServiceImpl implements BeerService {
 
   @Override
   public Optional<BeerDTO> getBeerById(UUID id) {
-    log.debug("Get Beer by Id - in service. Id: {}", id.toString());
+
+    log.debug("Get Beer by Id - in service. Id: " + id.toString());
+
     return Optional.of(beerMap.get(id));
   }
 
   @Override
-  public BeerDTO saveNewBeer(BeerDTO beerDTO) {
-    var savedBeer = BeerDTO.builder()
+  public BeerDTO saveNewBeer(BeerDTO beer) {
+
+    BeerDTO savedBeer = BeerDTO.builder()
       .id(UUID.randomUUID())
       .version(1)
       .createdDate(LocalDateTime.now())
       .updateDate(LocalDateTime.now())
-      .beerName(beerDTO.getBeerName())
-      .beerStyle(beerDTO.getBeerStyle())
-      .quantityOnHand(beerDTO.getQuantityOnHand())
-      .upc(beerDTO.getUpc())
-      .price(beerDTO.getPrice())
+      .beerName(beer.getBeerName())
+      .beerStyle(beer.getBeerStyle())
+      .quantityOnHand(beer.getQuantityOnHand())
+      .upc(beer.getUpc())
+      .price(beer.getPrice())
       .build();
+
     beerMap.put(savedBeer.getId(), savedBeer);
+
     return savedBeer;
   }
 

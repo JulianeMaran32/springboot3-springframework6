@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -27,7 +28,7 @@ public class BeerServiceJPA implements BeerService {
     return beerRepository.findAll()
       .stream()
       .map(beerMapper::beerToBeerDto)
-      .toList();
+      .collect(Collectors.toList());
   }
 
   @Override
@@ -62,10 +63,12 @@ public class BeerServiceJPA implements BeerService {
   @Override
   public void deleteById(UUID beerId) {
 
+    beerRepository.deleteById(beerId);
   }
 
   @Override
-  public void patchBeerById(UUID beerId, BeerDTO beerDTO) {
+  public void patchBeerById(UUID beerId, BeerDTO beer) {
 
   }
+
 }
