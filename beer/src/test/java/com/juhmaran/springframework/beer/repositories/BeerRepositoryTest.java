@@ -2,6 +2,7 @@ package com.juhmaran.springframework.beer.repositories;
 
 import com.juhmaran.springframework.beer.dto.BeerStyle;
 import com.juhmaran.springframework.beer.entities.Beer;
+import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 class BeerRepositoryTest {
@@ -17,13 +19,31 @@ class BeerRepositoryTest {
   BeerRepository beerRepository;
 
   @Test
+  void testSaveBeerNameTooLong() {
+
+    assertThrows(ConstraintViolationException.class, () -> {
+      Beer savedBeer = beerRepository.save(Beer.builder()
+        .beerName("My Beer 0123345678901233456789012334567890123345678901233456789012334567890123345678901233456789")
+        .beerStyle(BeerStyle.PALE_ALE)
+        .upc("234234234234")
+        .price(new BigDecimal("11.99"))
+        .build());
+
+      beerRepository.flush();
+    });
+  }
+
+  @Test
   void testSaveBeer() {
     Beer savedBeer = beerRepository.save(Beer.builder()
       .beerName("My Beer")
-      .beerStyle(BeerStyle.LAGER)
-      .upc("123456789012")
-      .price(BigDecimal.valueOf(9.99))
+      .beerStyle(BeerStyle.PALE_ALE)
+      .upc("234234234234")
+      .price(new BigDecimal("11.99"))
       .build());
+
+    beerRepository.flush();
+
     assertThat(savedBeer).isNotNull();
     assertThat(savedBeer.getId()).isNotNull();
   }
