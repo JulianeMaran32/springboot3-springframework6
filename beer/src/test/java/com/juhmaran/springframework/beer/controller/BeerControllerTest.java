@@ -30,8 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
 
-  public static final String BEER_PATH = "/api/v1/beer";
-
   @Autowired
   MockMvc mockMvc;
 
@@ -117,6 +115,20 @@ class BeerControllerTest {
         .content(objectMapper.writeValueAsString(beer)))
       .andExpect(status().isCreated())
       .andExpect(header().exists("Location"));
+  }
+
+  @Test
+  void testCreateBeerNullBeerName() throws Exception {
+
+    var beerDTO = BeerDTO.builder().build();
+
+    given(beerService.saveNewBeer(any(BeerDTO.class))).willReturn(beerServiceImpl.listBeers().get(1));
+
+    mockMvc.perform(post("/api/v1/beer")
+        .accept(MediaType.APPLICATION_JSON)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(objectMapper.writeValueAsString(beerDTO)))
+      .andExpect(status().isBadRequest());
   }
 
   @Test
