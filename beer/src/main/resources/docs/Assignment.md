@@ -273,3 +273,16 @@ Cliente._
 ---
 
 ## Data Validation with Spring
+
+### Tarefa 18: Atribuição - Complete Beer Validation
+
+#### Pergunta
+
+* In a web application where should validation be performed? In the web tier or server tier? (Em uma aplicação web, onde
+  a validação deve ser realizada? Na camada web ou na camada do servidor?)
+    * **Minha Resposta (EN):** Validation should be performed in both the web tier (client-side for user experience and  basic checks) and the server tier (server-side for security, data integrity, and business logic enforcement).
+    * **Minha Resposta (PT):** A validação deve ser realizada tanto na camada web (lado do cliente para experiência do
+      usuário e verificações básicas) quanto na camada do servidor (lado do servidor para segurança, integridade dos
+      dados e aplicação da lógica de negócio).
+    * **Resposta do Instrutor (EN):** Validation should be used in both tiers. (A validação deve ser usada em ambos os
+      níveis.)
