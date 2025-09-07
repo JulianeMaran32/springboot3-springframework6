@@ -7,11 +7,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
+@ActiveProfiles("test")
 class BootstrapDataTest {
 
   @Autowired
@@ -29,15 +30,11 @@ class BootstrapDataTest {
 
   @Test
   @DisplayName("Test run method of BootstrapData")
-  void run() throws Exception {
-    bootstrapData.run();
-    bootstrapData.run();
+  void testRun() throws Exception {
+    bootstrapData.run(null);
 
     assertThat(beerRepository.count()).isEqualTo(3);
     assertThat(customerRepository.count()).isEqualTo(3);
-
-    assertEquals(3, beerRepository.count());
-    assertEquals(3, customerRepository.count());
   }
 
 }

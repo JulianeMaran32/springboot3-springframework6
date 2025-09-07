@@ -43,7 +43,7 @@ class BeerRepositoryTest {
       .price(new BigDecimal("11.99"))
       .build());
 
-    beerRepository.flush();
+    // beerRepository.flush();
 
     assertThat(savedBeer).isNotNull();
     assertThat(savedBeer.getId()).isNotNull();

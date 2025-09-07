@@ -6,6 +6,7 @@ import com.juhmaran.beersystem.entities.Customer;
 import com.juhmaran.beersystem.repositories.BeerRepository;
 import com.juhmaran.beersystem.repositories.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import java.util.Arrays;
 /**
  * Created by Juliane Maran
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class BootstrapData implements CommandLineRunner {
@@ -25,8 +27,10 @@ public class BootstrapData implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    log.info("Inicializa os dados...");
     loadBeerData();
     loadCustomerData();
+    log.info("Finaliza os dados...");
   }
 
   private void loadBeerData() {
@@ -40,6 +44,7 @@ public class BootstrapData implements CommandLineRunner {
         .createdDate(LocalDateTime.now())
         .updateDate(LocalDateTime.now())
         .build();
+
       var beer2 = Beer.builder()
         .beerName("Crank")
         .beerStyle(BeerStyle.PALE_ALE)
@@ -49,6 +54,7 @@ public class BootstrapData implements CommandLineRunner {
         .createdDate(LocalDateTime.now())
         .updateDate(LocalDateTime.now())
         .build();
+
       var beer3 = Beer.builder()
         .beerName("Sunshine City")
         .beerStyle(BeerStyle.IPA)
@@ -62,11 +68,12 @@ public class BootstrapData implements CommandLineRunner {
       beerRepository.save(beer1);
       beerRepository.save(beer2);
       beerRepository.save(beer3);
-
     }
+
   }
 
   private void loadCustomerData() {
+
     if (customerRepository.count() == 0) {
       var customer1 = Customer.builder()
         .name("Customer 1")
@@ -74,12 +81,14 @@ public class BootstrapData implements CommandLineRunner {
         .createdDate(LocalDateTime.now())
         .updateDate(LocalDateTime.now())
         .build();
+
       var customer2 = Customer.builder()
         .name("Customer 2")
         .version(1)
         .createdDate(LocalDateTime.now())
         .updateDate(LocalDateTime.now())
         .build();
+
       var customer3 = Customer.builder()
         .name("Customer 3")
         .version(1)
