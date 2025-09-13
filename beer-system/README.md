@@ -71,3 +71,12 @@
   operações de atualização e exclusão.
 * `log.debug`: Para detalhes mais finos, como a adição de clientes simulados e a busca por ID.
 * `log.warn`: Para situações onde um cliente não é encontrado durante uma operação de busca, atualização ou exclusão.
+
+---
+
+## Referências
+
+- [Doc Spring Boot - Database Initialization](https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/howto-database-initialization.html)
+- [Doc Spring Boot - Database Migration Tool](https://docs.spring.io/spring-boot/how-to/data-initialization.html#howto.data-initialization.migration-tool)
+- [Flyway](https://www.red-gate.com/products/flyway/community/)
+- [Liquibase](https://www.liquibase.com/community)

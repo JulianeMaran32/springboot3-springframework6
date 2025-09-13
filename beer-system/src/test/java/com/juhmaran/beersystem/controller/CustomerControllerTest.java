@@ -67,7 +67,8 @@ class CustomerControllerTest {
         .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isOk())
       .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-      .andExpect(jsonPath("$.name", is(customer.getName())));
+      .andExpect(jsonPath("$.name", is(customer.getName())))
+      .andExpect(jsonPath("$.email", is(customer.getEmail())));
   }
 
   @Test
@@ -151,6 +152,7 @@ class CustomerControllerTest {
 
     Map<String, Object> customerMap = new HashMap<>();
     customerMap.put("name", "New Name");
+    customerMap.put("email", "New Email");
 
     mockMvc.perform(patch(CUSTOMER_PATH_ID, customer.getId())
         .contentType(MediaType.APPLICATION_JSON)
@@ -163,6 +165,8 @@ class CustomerControllerTest {
     assertThat(uuidArgumentCaptor.getValue()).isEqualTo(customer.getId());
     assertThat(customerArgumentCaptor.getValue().getName())
       .isEqualTo(customerMap.get("name"));
+    assertThat(customerArgumentCaptor.getValue().getEmail())
+      .isEqualTo(customerMap.get("email"));
   }
 
 
